@@ -16,44 +16,48 @@ class ControladorNotaRemision{
 	}
 
 	/*==========================================
-	=         I     CREAR COMPROBANTE          =
+	=         I     CREAR NOTA REMISION        =
 	==========================================*/
-	static public function ctrCrearComprobante(){
+	static public function ctrCrearNotasRemision(){
 
-		if (isset($_POST["nuevoIdComprobante"])) {
-			if( preg_match('/^[0-9]+$/', $_POST["idSucursal"])&&
-				preg_match('/^[0-9]+$/', $_POST["idUsuario"])&&
-				preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ& ]+$/', $_POST["nuevoTipo"]) &&
-				preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ#. ]+$/', $_POST["nuevaMoneda"]) &&
-				preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ#. ]+$/', $_POST["nuevoNumero"]) &&
-				preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ#. ]+$/', $_POST["nuevoTC"]) &&
-				preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ#. ]+$/', $_POST["nuevoAjuste"]) &&
-				preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ#. ]+$/', $_POST["nuevaGlosa1"]) &&
-				preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ#. ]+$/', $_POST["nuevoEstado"]) 
+		if (isset($_POST["nuevoIdNR"])) {
+
+			if( preg_match('/^[0-9 ]+$/', $_POST["nuevoNR"]) &&
+				preg_match('/^[0-9 ]+$/', $_POST["nuevoDC"]) &&
+				preg_match('/^[0-9 ]+$/', $_POST["nuevoSAP"]) 
 			){ 	
 			    
-			   	$tabla = "comprobante";
-
-			   	$datos = array("idComprobante" => $_POST["nuevoIdComprobante"],
-					"ajuste" => $_POST["nuevoAjuste"],
-					"moneda" => $_POST["nuevaMoneda"],
-					"tipoCambio" => "6.96",
-					"estado" => $_POST["nuevoEstado"],
-					"fecha" => date('Y/m/d', strtotime($_POST["nuevaFecha"])),
-					"idUsuario" => $_POST["idUsuario"],
-					"glosa1" => $_POST["nuevaGlosa1"],
-					"numero" => $_POST["nuevoNumero"],
-					"tipo" => $_POST["nuevoTipo"],
-					"idSucursal" => $_POST["idSucursal"]
+			   	$tabla = "notaremision";
+			
+			   	$datos = array(	"idNR" => $_POST["nuevoIdNR"],
+								"automatico" => $_POST["nuevoNumero"],
+								"clasificador" => $_POST["nuevaEmpresa"],
+								"cotizacion" => $_POST["nuevoTC"],
+								"estado" => "D",
+								"fecha" => date('Y/m/d', strtotime($_POST["nuevaFecha"])),
+								"usuario" => $_POST["nuevoUsuario"],
+								"tipo1" => $_POST["nuevaFlete"],
+								"login" => $_POST["idUsuario"],
+								"moneda" => $_POST["nuevaMoneda"],
+								"tipo2" => $_POST["nuevoTipo"],
+								"sistema" => "Registra",
+								"numeroNR" => $_POST["nuevoNR"],
+								"numeroDC" => $_POST["nuevoDC"],
+								"numeroSAP" => $_POST["nuevoSAP"],
+								"origen" => $_POST["nuevoOrigen"],
+								"destino" => $_POST["nuevoDestino"],
+								"placa" => $_POST["nuevaPlaca"],
+								//"cod_Camion" => $_POST[""],
+								"chofer" => $_POST["nuevoChofer"]
 
 				);
 
-				$respuesta = ModeloComprobantes::mdlIngresarComprobante($tabla, $datos);
+				$respuesta = ModeloNotaRemision::mdlIngresarNotaRemision($tabla, $datos);
 				
 				if ($respuesta == "ok") {
 					/*===================================
 					=            GUARDAR LIN            =
-					===================================*/					
+					===================================					
 					if(isset($_POST["nuevaCuenta"])){
 
 						$items1 = $_POST["nuevaCuenta"];
@@ -99,17 +103,18 @@ class ControladorNotaRemision{
 					}
 			
 					}
-					if ($respuesta2 == "ok") {
+					if ($respuesta2 == "ok") {*/
+
 						echo '<script>
 						swal({
 							type: "success",
-							title: "El comprobante ha sido guardado correctamente",
+							title: "El comprobante cabecera ha sido guardado correctamente",
 							showConfirmButton: true,
 							confirmButtonText: "Cerrar",
 							closeOnConfirm: false
 						}).then((result)=>{
 							if(result.value){
-								window.location = "crear-comprobante";
+								window.location = "crear-notaremision";
 							}
 						});
 					 
@@ -124,13 +129,13 @@ class ControladorNotaRemision{
 							closeOnConfirm: false
 						}).then((result)=>{
 							if(result.value){
-								window.location = "crear-comprobante";
+								window.location = "crear-notaremision";
 							}
 						});
 					 
 						</script>';
 					}
-				}
+				//}
 				//echo json_encode($respuesta);	
 			}else{
 				echo '<script>

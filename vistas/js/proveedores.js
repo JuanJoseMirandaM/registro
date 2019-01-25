@@ -18,7 +18,7 @@ $(".btnEditarProvee").click(function(){
 		dataType: "json",
 		success: function(respuesta){
 			console.log("respuesta Provee", respuesta);
-			$("#editarCod").val(respuesta["cod_provee"]);
+			$("#editarCode").val(respuesta["cod_provee"]);
 			$("#editarNombre").val(respuesta["nombre_com"]);
 			$("#editarFono").val(respuesta["celular"]);
 			$("#editarPlaca").val(respuesta["placa_camion"]);
@@ -26,11 +26,9 @@ $(".btnEditarProvee").click(function(){
 			$("#editarChofer").val(respuesta["chofer"]);
 			$("#editarFonoChofer").val(respuesta["cel_chofer"]);
 
-			$("#codActual").val(respuesta["cod_provee"]);
+			$("#idActual").val(respuesta["idprovee"]);
 			$("#nombreActual").val(respuesta["nombre_com"]);
 
-
-			
 		}
 
 	}); 

@@ -10,23 +10,22 @@ Ilustrator adobe
 
 
 <!--
-                        <?php
-                          $item = null;
-                          $valor = null;
+  <?php
+    $item = null;
+    $valor = null;
 
-                          $comprobantes = ControladorComprobantes::ctrMostrarComprobantes($item, $valor);
-
-                          if(!$comprobantes){
-                            echo '<input type="hidden" class="form-control nuevoIdC" id="nuevoIdComprobante" name="nuevoIdComprobante" value="1">';
-                          }else{
-                            foreach ($comprobantes as $key => $value) {
-                              # code...
-                            }
-                            $idComprobante = $value["idComprobante"]+1;
-                            echo '<input type="hidden" class="form-control nuevoIdC" id="nuevoIdComprobante" name="nuevoIdComprobante" value="'.$idComprobante.'">';
-                          }
-                        ?>-->
-
+    $comprobantes = ControladorComprobantes::ctrMostrarComprobantes($item, $valor);       
+    if(!$comprobantes){
+      echo '<input type="hidden" class="form-control nuevoIdC" id="nuevoIdComprobante" name="nuevoIdComprobante" value="1">';
+    }else{
+      foreach ($comprobantes as $key => $value) {
+        # code...
+      }
+      $idComprobante = $value["idComprobante"]+1;
+      echo '<input type="hidden" class="form-control nuevoIdC" id="nuevoIdComprobante" name="nuevoIdComprobante" value="'.$idComprobante.'">';
+    }
+  ?>
+-->
 
 
 

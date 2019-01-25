@@ -23,7 +23,7 @@
       </div>
 
       <div class="box-body">
-        <table class="table table-bordered table-striped tablas">
+        <table class="table table-bordered table-striped tablas dt-responsive">
           <thead>
             <tr>
               <th style="width:10px">#</th>
@@ -227,8 +227,8 @@
               <div class=" form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                  <input type="text" class="form-control input-lg" id="editarCod" name="editarCod"value="" required>
-                  <input type="hidden" id="codActual" name="codActual">
+                  <input type="text" class="form-control input-lg" id="editarCode" name="editarCode"value="" required>
+                  <input type="hidden" id="idActual" name="idActual">
                 </div>
               </div>
 
@@ -300,8 +300,8 @@
 
         <?php 
 
-          //$crearUsuario = new  ControladorUsuarios();
-          //$crearUsuario -> ctrEditarUsuario();
+          $editarProvee = new  ControladorProveedores();
+          $editarProvee -> ctrEditarProveedor();
 
         ?>
       </form>  

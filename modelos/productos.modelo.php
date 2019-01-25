@@ -90,15 +90,13 @@ class ModeloProductos{
 	=============================================*/
 	static public function mdlEditarProducto($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET id_categoria = :id_categoria, descripcion = :descripcion, imagen = :imagen, stock = :stock, precio_compra = :precio_compra, precio_venta = :precio_venta WHERE codigo = :codigo");
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET descripcion_largo = :descripcion, peso = :peso, bot_x_caja = :bot_x_caja, litro_x_bot = :litro_x_bot WHERE cod_producto = :cod_producto");
 
-		$stmt->bindParam(":id_categoria", $datos["id_categoria"], PDO::PARAM_INT);
-		$stmt->bindParam(":codigo", $datos["codigo"], PDO::PARAM_STR);
-		$stmt->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
-		$stmt->bindParam(":imagen", $datos["imagen"], PDO::PARAM_STR);
-		$stmt->bindParam(":stock", $datos["stock"], PDO::PARAM_STR);
-		$stmt->bindParam(":precio_compra", $datos["precio_compra"], PDO::PARAM_STR);
-		$stmt->bindParam(":precio_venta", $datos["precio_venta"], PDO::PARAM_STR);
+		$stmt -> bindParam(":cod_producto", $datos["cod_producto"], PDO::PARAM_STR);
+		$stmt -> bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
+		$stmt -> bindParam(":peso", $datos["peso"], PDO::PARAM_STR);
+		$stmt -> bindParam(":bot_x_caja", $datos["bot_x_caja"], PDO::PARAM_STR);
+		$stmt -> bindParam(":litro_x_bot", $datos["litro_x_bot"], PDO::PARAM_STR);
 
 		if($stmt->execute()){
 
@@ -121,7 +119,7 @@ class ModeloProductos{
 
 	static public function mdlEliminarProducto($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
+		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE cod_producto = :id");
 
 		$stmt -> bindParam(":id", $datos, PDO::PARAM_INT);
 
@@ -145,12 +143,13 @@ class ModeloProductos{
 	ACTUALIZAR PRODUCTO
 	=============================================*/
 
-	static public function mdlActualizarProducto($tabla, $item1, $valor1, $valor){
+	static public function mdlActualizarProducto($tabla, $item1, $valor1, $item2, $valor2){
 
-		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET $item1 = :$item1 WHERE id = :id");
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET $item1 = :$item1 WHERE $item2 = :$item2");
 
 		$stmt -> bindParam(":".$item1, $valor1, PDO::PARAM_STR);
-		$stmt -> bindParam(":id", $valor, PDO::PARAM_STR);
+		$stmt -> bindParam(":".$item2, $valor2, PDO::PARAM_STR);
+
 
 		if($stmt -> execute()){
 

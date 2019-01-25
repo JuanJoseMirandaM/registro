@@ -23,7 +23,7 @@
       </div>
 
       <div class="box-body">
-        <table class="table table-bordered table-striped tablas">
+        <table class="table table-bordered table-striped tablas dt-responsive">
           <thead>
             <tr>
               <th style="width:10px">#</th>

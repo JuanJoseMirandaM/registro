@@ -17,8 +17,18 @@ $(".btnEditarProducto").click(function(){
 		processData: false,
 		dataType: "json",
 		success: function(respuesta){
-			console.log("respuesta_ajax",respuesta);
-			
+			//console.log("respuesta_ajax",respuesta);
+			$("#editarCodigo").val(respuesta["cod_producto"]);
+			$("#editarDescripcion").val(respuesta["descripcion_largo"]);
+			$("#editarPeso").val(respuesta["peso"]);
+			$("#editarBXC").val(respuesta["bot_x_caja"]);
+			$("#editarLXB").val(respuesta["litro_x_bot"]);
+
+			$("#codigoActual").val(respuesta["cod_producto"]);
+			$("#descripcionActual").val(respuesta["descripcion_largo"]);
+			$("#pesoActual").val(respuesta["peso"]);
+			$("#BXCActual").val(respuesta["bot_x_caja"]);
+			$("#LXBActual").val(respuesta["litro_x_bot"]);
 		}
 
 	}); 
@@ -43,7 +53,7 @@ $(".btnActivarProducto").click(function(){
 		contentType: false,
 		processData: false,
 		success: function(respuesta){
-			console.log("resp",respuesta);
+			//console.log("resp",respuesta);
 		}
 
 	})
@@ -60,35 +70,7 @@ $(".btnActivarProducto").click(function(){
 		$(this).attr('estadoProducto', 0);
 	}
 })
-/*================================================
-=            VALIDAR NO REPERTIR USUARIO         =
-================================================*/
-$("#nuevoUsuario").change(function(){
 
-	$(".alert").remove();
-
-	var usuario = $(this).val();
-
-	var datos = new FormData();
-	datos.append("validarUsuario", usuario);
-
-	$.ajax({
-		url:"ajax/usuarios.ajax.php",
-		method: "POST",
-		data: datos,
-		cache: false,
-		contentType: false,
-		processData: false,
-		success: function(respuesta){
-			//nconsole.log("respuesta","2"+respuesta+"2");
-			if (respuesta.length > 7){
-				$("#nuevoUsuario").parent().after('<div class="alert alert-warning">Este usuario ya existe en la base de datos</div>')
-				$("#nuevoUsuario").val("");
-			}
-		}
-
-	})
-})
 /*========================================
 =            ELIMINAR PRODUCTO           =
 ========================================*/

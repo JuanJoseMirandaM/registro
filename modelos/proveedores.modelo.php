@@ -57,16 +57,17 @@ class ModeloProveedores{
 	/**
  	* EditarDE USUARIOS
  	*/
-	static public function mdlEditarUsuario($tabla, $datos){
-		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET ci = :ci ,nombre = :nombre , usuario = :usuario , password = :password, foto = :foto , fono = :fono , perfil = :perfil WHERE usuario = :usuario" );
+	static public function mdlEditarProveedor($tabla, $datos){
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET cod_provee = :cod_provee, nombre_com = :nombre_com, celular = :celular, placa_camion = :placa_camion, marca = :marca, chofer = :chofer, cel_chofer = :cel_chofer WHERE idprovee = :idprovee" );
 
-		$stmt -> bindParam(":ci", $datos["ci"], PDO::PARAM_STR);
-		$stmt -> bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
-		$stmt -> bindParam(":usuario", $datos["usuario"], PDO::PARAM_STR);
-		$stmt -> bindParam(":password", $datos["password"], PDO::PARAM_STR);
-		$stmt -> bindParam(":foto", $datos["foto"], PDO::PARAM_STR);
-		$stmt -> bindParam(":fono", $datos["fono"], PDO::PARAM_STR);
-		$stmt -> bindParam(":perfil", $datos["perfil"], PDO::PARAM_STR);
+		$stmt -> bindParam(":idprovee", $datos["idprovee"], PDO::PARAM_STR);
+		$stmt -> bindParam(":cod_provee", $datos["cod_provee"], PDO::PARAM_STR);
+		$stmt -> bindParam(":nombre_com", $datos["nombre_com"], PDO::PARAM_STR);
+		$stmt -> bindParam(":celular", $datos["celular"], PDO::PARAM_STR);
+		$stmt -> bindParam(":placa_camion", $datos["placa_camion"], PDO::PARAM_STR);
+		$stmt -> bindParam(":marca", $datos["marca"], PDO::PARAM_STR);
+		$stmt -> bindParam(":chofer", $datos["chofer"], PDO::PARAM_STR);
+		$stmt -> bindParam(":cel_chofer", $datos["cel_chofer"], PDO::PARAM_STR);
 		
 
 		if ($stmt->execute()) {

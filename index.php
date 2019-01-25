@@ -12,3 +12,5 @@ require_once "modelos/notasRemision.modelo.php";
 
 $plantilla = new ControladorPlantilla();
 $plantilla -> ctrPlantilla();
+
+		

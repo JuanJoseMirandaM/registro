@@ -1,4 +1,4 @@
- 	<?php 
+ <?php 
 
 class ControladorProveedores{
 
@@ -75,59 +75,39 @@ class ControladorProveedores{
 	/*==========================================
 	=         I     EDITAR USUARIO              =
 	==========================================*/
-	public function ctrEditarUsuario(){
-		if (isset($_POST["editarUsuario"])) {
-			if(preg_match('/^[0-9]+$/', $_POST["editarCi"]) &&
+	public function ctrEditarProveedor(){
+		if (isset($_POST["editarCode"])) {
+			if(preg_match('/^[0-9]+$/', $_POST["editarCode"]) &&
 			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarNombre"]) &&
 			   preg_match('/^[0-9-]+$/', $_POST["editarFono"])
 			){
 				
+				$tabla = "proveedor";
+				
+				$datos = array("idprovee" => $_POST["idActual"],
+							   "cod_provee" => $_POST["editarCode"],
+							   "nombre_com" => $_POST["editarNombre"],
+							   "celular" => $_POST["editarFono"],
+							   "placa_camion" => $_POST["editarPlaca"],
+							   "marca" => $_POST["editarMarca"],
+							   "chofer" => $_POST["editarChofer"],
+							   "cel_chofer" => $_POST["editarFonoChofer"]
+							   );
 
-			   	if ($_POST["editarPassword"]!="") {
-			   		if (preg_match('/^[a-zA-Z0-9]+$/', $_POST["editarPassword"])) {
-			   			$encriptar = crypt($_POST["editarPassword"],'$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');	
-			   		}else{
-			   			echo '<script>
-						swal({
-							type: "error",
-							title: "La contraseña no puede ir vacia o llevar caracteres especiales!",
-							showConfirmButton: true,
-							confirmButtonText: "Cerrar",
-							closeOnConfirm: false
-						}).then((result)=>{
-							if(result.value){
-								window.location = "usuarios";
-							}
-						});
-				 
-						</script>';
-			   		}
-			   	}else{
-			   		$encriptar = $_POST["passwordActual"];
-			   	}
-
-			   	$tabla = "usuario";
-
-				$datos = array("ci" => $_POST["editarCi"],
-							   "nombre" => $_POST["editarNombre"],
-							   "usuario" => $_POST["editarUsuario"],
-							   "password" => $encriptar,
-							   "foto" => $ruta,
-							   "fono" => $_POST["editarFono"],
-							   "perfil" => $_POST["editarPerfil"]);
-				$respuesta = ModeloUsuarios::MdlEditarUsuario($tabla, $datos);
+				
+				$respuesta = ModeloProveedores::MdlEditarProveedor($tabla, $datos);
 
 				if ($respuesta == "ok") {
 					echo '<script>
 					swal({
 						type: "success",
-						title: "El usuario ha sido guardado correctamente",
+						title: "El proveedor ha sido guardado correctamente",
 						showConfirmButton: true,
 						confirmButtonText: "Cerrar",
 						closeOnConfirm: false
 					}).then((result)=>{
 						if(result.value){
-							window.location = "usuarios";
+							window.location = "proveedores";
 						}
 					});
 				 
@@ -138,13 +118,13 @@ class ControladorProveedores{
 				echo '<script>
 					swal({
 						type: "error",
-						title: "El usuario no puede ir vacio o llevar caracteres especiales!",
+						title: "El proveedor no puede ir vacio o llevar caracteres especiales!",
 						showConfirmButton: true,
 						confirmButtonText: "Cerrar",
 						closeOnConfirm: false
 					}).then((result)=>{
 						if(result.value){
-							window.location = "usuarios";
+							window.location = "proveedores";
 						}
 					});
 				 

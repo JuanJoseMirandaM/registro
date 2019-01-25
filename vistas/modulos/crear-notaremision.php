@@ -8,7 +8,7 @@
 
     <ol class="breadcrumb">
       <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
-      <li><a href="comprobantes"><i class="fa fa-dashboard"></i>Notas de Remision</a></li>
+      <li><a href="notaremision"><i class="fa fa-dashboard"></i>Notas de Remision</a></li>
       <li class="active">Crear Notas de Remision</li>
     </ol>
   </section>
@@ -37,7 +37,7 @@
                   <div class="input-group">
 
                     <span class="input-group-addon"><i class="fa fa-home"></i></span>
-                    <select name="nuevaEmpresa[]" id="nuevaEmpresa" class="form-control  nuevaEmpresa" style="width: 100%;" required>
+                    <select name="nuevaEmpresa" id="nuevaEmpresa" class="form-control  nuevaEmpresa" style="width: 100%;" required>
                       <option value="CO-HL-MPM-LPZ" selected>Mercedes Penafiel Mogro</option>
                       <option value="CO-HL-MD-LPZ">M&D Transporte</option>
 
@@ -62,7 +62,7 @@
                   <div class="input-group col-lg-12 col-sm-12 col-xs-12">
                         
                     <label>Tipo</label>
-                    <select name="nuevaTipo[]" id="nuevoTipo" class="form-control  nuevoTipo" style="width: 100%;" required>
+                    <select name="nuevaTipo" id="nuevoTipo" class="form-control  nuevoTipo" style="width: 100%;" required>
                       <option value="NR">Nota Remision</option>
                     </select>
 
@@ -96,22 +96,19 @@
                     if(!$ventas){
 
                       echo '<input type="text" class="form-control nuevoNumero" id="nuevoNumero" name="nuevoNumero" value="1001" required readonly>';
-
-                  
+                      echo '<input type="hidden" class="form-control nuevoIdNR" id="nuevoIdNR" name="nuevoIdNR" value="1">';
 
                     }else{
 
-                      foreach ($ventas as $key => $value) {
-                        
-                        
-                      
+                      foreach ($ventas as $key => $value) {           
                       }
 
                       $codigo = $value["automatico"] + 1;
+                      $idNR = $value["idNR"] + 1;
 
                       echo '<input type="text" class="form-control nuevoNumero" id="nuevoNumero" name="nuevoNumero" value="'.$codigo.'" required readonly>';
                   
-
+                      echo '<input type="hidden" class="form-control nuevoIdNR" id="nuevoIdNR" name="nuevoIdNR" value="'.$idNR.'">';
                     }
 
                     ?>
@@ -134,7 +131,7 @@
                   <div class="input-group  col-lg-12 col-sm-12 col-xs-12">
                         
                     <label>Moneda</label>
-                    <select name="nuevaMoneda[]" id="nuevaMoneda" class="form-control  nuevaMoneda" style="width: 100%;" required>
+                    <select name="nuevaMoneda" id="nuevaMoneda" class="form-control  nuevaMoneda" style="width: 100%;" required>
                       <option value="BS">Bolivianos</option>
                     </select> 
                         
@@ -166,34 +163,12 @@
 
                 </div>
 
-                <!-- ESTADO-->
-                <div class="col-lg-3 col-sm-2 col-xs-6 ">
-
-                  <label>Estado</label>
-                      
-                  <div class="radio">
-                    <label>
-                      <input type="radio" name="nuevoEstado" id="nuevoEstado" value="P" checked>Posteado
-                    </label>
-                  </div>
-                  <div class="radio">
-                    <label>
-                      <input type="radio" name="nuevoEstado" id="nuevoEstado" value="D">Diferido
-                    </label>
-                  </div>
-                  <div class="radio">
-                    <label>
-                      <input type="radio" name="nuevoEstado" id="" value="A" disabled>Anulado
-                    </label>
-                  </div>
-
-                </div>
               </div>
 
               <div class="form-group row">
                 <label class="col-lg-1 col-sm-2 col-xs-4 col-form-label">Flete de</label>
                 <div class="col-lg-2 col-sm-2 col-xs-8">
-                  <select name="nuevaFlete[]" id="nuevaFlete" class="form-control  nuevaFlete" style="width: 100%;" required>
+                  <select name="nuevaFlete" id="nuevaFlete" class="form-control  nuevaFlete" style="width: 100%;" required>
                     <option value="IDA">Ida</option>
                     <option value="RETORNO">Retorno</option>
                     <option value="DE IDA Y VUELTA">Ida y vuelta</option>
@@ -201,7 +176,7 @@
                 </div>
                 <label class="col-lg-1 col-sm-1 col-xs-2 col-form-label">Origen</label>
                 <div class="col-lg-2 col-sm-3 col-xs-4">
-                  <select name="nuevaOrigen[]" id="nuevaOrigen" class="form-control  nuevaOrigen" style="width: 100%;" required>
+                  <select name="nuevoOrigen" id="nuevoOrigen" class="form-control  nuevoOrigen" style="width: 100%;" required>
                     <option value="LPZ" selected>La Paz</option>
                     <option value="ORU">Oruro</option>
                     <option value="CBB">Cochabamba</option>
@@ -213,7 +188,7 @@
                 </div>
                 <label class="col-lg-1 col-sm-1 col-xs-2 col-form-label">Destino</label>
                 <div class="col-lg-2 col-sm-3 col-xs-4">
-                  <select name="nuevaDestino[]" id="nuevaDestino" class="form-control  nuevaDestino" style="width: 100%;" required>
+                  <select name="nuevoDestino" id="nuevoDestino" class="form-control  nuevoDestino" style="width: 100%;" required>
                     <option value="LPZ">La Paz</option>
                     <option value="ORU" selected>Oruro</option>
                     <option value="CBB">Cochabamba</option>
@@ -228,7 +203,7 @@
               <div class="form-group row ">
                 <label class="col-lg-1 col-sm-2 col-xs-4 col-form-label">Transporte</label>
                 <div class="col-lg-2 col-sm-4 col-xs-8">
-                  <select name="nuevaPlaca[]" id="nuevaPlaca" class="form-control  nuevaPlaca select2" style="width: 100%;" required>
+                  <select name="nuevaPlaca" id="nuevaPlaca" class="form-control  nuevaPlaca select2" style="width: 100%;" required>
                     <option value="">Seleccione Placa</option>
                     <?php
                       $item = null;
@@ -239,9 +214,9 @@
                       foreach ($proveedores as $key => $value) {
                         $placa = $value["placa_camion"];
                         if ($value["habilitado"]==1) {
-                          echo '<option id="'.$placa.'" value="'.$value["idprovee"].'">'.$placa.'</option>';
+                          echo '<option value="'.$value["idprovee"].'">'.$placa.'</option>';
                         }else{
-                          echo '<option id="'.$placa.'" value="'.$value["idprovee"].'" disabled>'.$placa.'</option>';
+                          echo '<option value="'.$value["idprovee"].'" disabled>'.$placa.'</option>';
                         }
                         
                       }
@@ -252,6 +227,11 @@
                 
                 <div class="col-lg-4 col-sm-6 col-xs-12 ">
                   <input type="text" class="form-control nuevoDueno" id="nuevoDueno" name="nuevoDueno"  placeholder="Dueño" readonly required>
+                  <input type="hidden" class="nuevoCodCamion" id="nuevoCodCamion" name="nuevoCodCamion" value="">
+                </div>
+
+                <div class="col-lg-0 col-sm-0 col-xs-0 ">
+                  <input type="hidden" class="nuevoCodCamion2" id="nuevoCodCamion2" name="nuevoCodCamion2" value="">
                 </div>
               </div>
 
@@ -294,8 +274,10 @@
             </div>
               
             <div class="box-footer">
-                  
-              <button type="submit" class="btn btn-primary pull-right  GuardarLinNR">Guardar cambios</button>
+              <button type="button" class="btn btn-warning pull-left"><i class="fa fa-print"></i> Imprimir</button>
+              <button type="button" class="btn btn-success pull-left"><i class="fa fa-check"></i> Postear</button>
+
+              <button type="submit" class="btn btn-primary pull-right  GuardarLinNR"><i class="fa fa-save"></i> Guardar</button>
 
             </div>
           </div>
@@ -307,8 +289,8 @@
 
             //$respuesta = ControladorProductos::ctrMostrarProductos($item, $valor);
             //var_dump($respuesta);
-            //$crearComprobante = new  ControladorComprobantes();
-            //$crearComprobante -> ctrCrearComprobante();
+            $CrearNR = new  ControladorNotaRemision();
+            $CrearNR -> ctrCrearNotasRemision();
 
           ?>
         </form>

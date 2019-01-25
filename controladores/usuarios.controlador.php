@@ -379,7 +379,10 @@ class ControladorUsuarios{
 				rmdir("vistas/img/usuarios/".$_GET["usuario"]);
 			}
 
-			$respuesta = ModeloUsuarios::mdlBorrarUsuario($tabla, $datos);
+			if ($resultado="true") {
+				$respuesta = ModeloUsuarios::mdlBorrarUsuario($tabla, $datos);
+			}
+			
 
 			if ($respuesta == "ok") {
 				echo '<script>

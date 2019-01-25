@@ -88,11 +88,11 @@ class ControladorProductos{
 	==========================================*/
 	public function ctrEditarProducto(){
 		if (isset($_POST["editarCodigo"])) {
-			if(preg_match('/^[0-9]+$/', $_POST["editarCodigo"]) &&
+			if(preg_match('/^[0-9 ]+$/', $_POST["editarCodigo"]) &&
 			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarDescripcion"]) &&
-			   preg_match('/^[0-9-]+$/', $_POST["editarPeso"])
+			   preg_match('/^[0-9-.]+$/', $_POST["editarPeso"])
 			){
-
+				
 				$tabla = "producto";
 
 				$datos = array("cod_producto" => $_POST["editarCodigo"],
@@ -100,10 +100,9 @@ class ControladorProductos{
 							   "peso" => $_POST["editarPeso"],
 							   "bot_x_caja" => $_POST["editarBXC"],
 							   "litro_x_bot" => $_POST["editarLXB"]);
-				$resultado = $_GET["resultado"];
-				if ($resultado="true") {
-					$respuesta = ModeloProductos::MdlIngresarProducto($tabla, $datos);
-				}
+
+				$respuesta = ModeloProductos::MdlEditarProducto($tabla, $datos);
+				
 
 
 				if ($respuesta == "ok") {
@@ -148,10 +147,16 @@ class ControladorProductos{
 	==========================================*/
 	public function ctrBorrarProducto(){
 		if (isset($_GET["idProducto"])) {
+			
 			$tabla = "producto";
 			$datos = $_GET["idProducto"];
+			$resultado = $_GET["resultado"];
+			
+			if ($resultado="true") {
 
-			$respuesta = ModeloProductos::mdlBorrarProducto($tabla, $datos);
+				$respuesta = ModeloProductos::mdlEliminarProducto($tabla, $datos);
+			}
+			
 
 			if ($respuesta == "ok") {
 				echo '<script>

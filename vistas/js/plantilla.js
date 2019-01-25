@@ -9,8 +9,8 @@ $('.sidebar-menu').tree();
 =============================================*/
 
 $('.tablas').DataTable({
-	"scrollX": true,
-	//responsive: true,
+	//"scrollX": true,
+	"responsive": true,
 	"language" : {
 		"sProcessing":     "Procesando...",
 		"sLengthMenu":     "Mostrar _MENU_ registros",

@@ -145,7 +145,7 @@ $(".formularioNR").on("change", "select.nuevaPlaca", function(){
             //console.log("respuesta",respuesta);
             $(nuevoDueno).val(respuesta["nombre_com"]);
             $(nuevoChofer).val(respuesta["chofer"]);
-
+            //$(nuevoCodCamion2).val(respuesta["cod_Camion"]);
           // AGRUPAR PRODUCTOS EN FORMATO JSON
 
             activarSelect();
