@@ -99,7 +99,7 @@
 
                       <input type="text" class="form-control nuevoNumero" id="nuevoNumero" name="nuevoNumero" required readonly value="<?php echo $NR["automatico"]; ?>">
                   
-                      <input type="hidden" class="form-control nuevoIdNR" id="nuevoIdNR" name="nuevoIdNR" value="<?php echo $NR["idNR"]; ?>">
+                      <input type="hidden" class="form-control editarIdNR" id="editarIdNR" name="editarIdNR" value="<?php echo $NR["idNR"]; ?>">
                     
                         
                   </div>
@@ -241,7 +241,7 @@
               <div class="form-group row">
                 <label class="col-lg-1 col-sm-2 col-xs-4 col-form-label">Glosa</label>
                 <div class="col-lg-6 col-sm-10 col-xs-8">
-                  <textarea class="form-control" rows="3" id="nuevaGLosa" name="nuevaGlosa" required><?php echo $NR["glosa1"]; ?></textarea>
+                  <textarea class="form-control" rows="3" id="nuevaGLosa" name="nuevaGlosa" ><?php echo $NR["glosa1"]; ?></textarea>
                 </div>
               </div>
                
@@ -278,8 +278,55 @@
 
             <div class="form-group row nuevoProducto">
 
-                
+            <?php 
 
+              $listaProducto = json_decode($NR["detalle"], true);
+              //var_dump($listaProducto);
+              foreach ($listaProducto as $key => $value) {
+                echo '<div class="row" style="padding:5px 15px">
+
+                  <div class="col-xs-2 ingresoCantidad">
+
+                    <div class="input-group">
+                      
+                      <span class="input-group-addon"><button type="button" class="btn btn-danger btn-xs quitarDetalle" idProducto><i class="fa fa-times"></i></button></span>
+
+                      <input type="number" class="form-control nuevaCantidadProducto" name="nuevaCantidadProducto" min="1" value="'.$value["cantidad"].'" stock nuevoStock required>
+
+                      </select>
+
+                    </div>
+                    
+                  </div>
+
+                  <div class="col-xs-3" style="padding-right:0px">
+                  
+                    <div class="input-group col-xs-12">
+
+                      <select class="form-control nuevaDescripcionProducto" name="nuevaDescripcionProducto"   required>
+
+                      <option value="'.$value["codigo"].'">'.$value["codigo"].'-'.$value["descripcion"].'</option>
+
+                      </select>
+
+                    </div>
+
+                  </div>
+
+                  <div class="col-xs-6 ingresoDetalle" style="padding-right:0px">
+
+                    <div class="input-group col-xs-12">
+                         
+                      <input type="text" class="form-control nuevoDetalleProducto" name="nuevoDetalleProducto" readonly required value="'.$value["descripcion"].'">
+         
+                    </div>
+                     
+                  </div>
+
+                </div>';
+              }
+           ?>    
+            
             </div>
 
             <input type="hidden" id="listaProductos" name="listaProductos">
@@ -294,8 +341,8 @@
           </div>
 
           <?php 
-            //$EditarNR = new  ControladorNotaRemision();
-            //$EditarNR -> ctrEditarNotasRemision();
+            $EditarNR = new  ControladorNotaRemision();
+            $EditarNR -> ctrEditarNotasRemision();
 
           ?>
         </form>
