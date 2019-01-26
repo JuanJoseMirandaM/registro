@@ -67,7 +67,7 @@ class ControladorNotaRemision{
 							closeOnConfirm: false
 						}).then((result)=>{
 							if(result.value){
-								window.location = "crear-notaremision";
+								window.location = "notaremision";
 							}
 						});
 					 

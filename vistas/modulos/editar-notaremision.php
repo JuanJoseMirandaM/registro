@@ -190,12 +190,18 @@
                   </select>
                 </div>
               </div>
+              <?php
+                $item = 'cod_provee';
+                $valor = $NR["cod_Camion"];
 
+                $proveedor = ControladorProveedores::ctrMostrarProveedores($item, $valor);
+                //var_dump($proveedor);
+              ?>
               <div class="form-group row ">
                 <label class="col-lg-1 col-sm-2 col-xs-4 col-form-label">Transporte</label>
                 <div class="col-lg-2 col-sm-4 col-xs-8">
                   <select name="nuevaPlaca" id="nuevaPlaca" class="form-control  nuevaPlaca select2" style="width: 100%;" required>
-                    <option value="">Seleccione Placa</option>
+                    <option value="<?php echo $proveedor["idprovee"]; ?>"><?php echo $NR["placa"]; ?></option>
                     <?php
                       $item = null;
                       $valor = null;
@@ -217,26 +223,25 @@
                 </div>
                 
                 <div class="col-lg-4 col-sm-6 col-xs-12 ">
-                  <input type="text" class="form-control nuevoDueno" id="nuevoDueno" name="nuevoDueno"  placeholder="Dueño" readonly required>
-                  <input type="hidden" class="nuevoCodCamion" id="nuevoCodCamion" name="nuevoCodCamion" value="">
+                  <input type="text" class="form-control nuevoDueno" id="nuevoDueno" name="nuevoDueno" value="<?php echo $proveedor["nombre_com"]; ?>" readonly required>
+                  <input type="hidden" class="nuevoCodCamion" id="nuevoCodCamion" name="nuevoCodCamion" value="<?php echo $NR["cod_Camion"]; ?>">
+                  <input type="hidden" class="nuevaPlacaCamion" id="nuevaPlacaCamion" name="nuevaPlacaCamion" value="<?php echo $NR["placa"]; ?>">
                 </div>
 
-                <div class="col-lg-0 col-sm-0 col-xs-0 ">
-                  <input type="hidden" class="nuevoCodCamion2" id="nuevoCodCamion2" name="nuevoCodCamion2" value="">
-                </div>
+                
               </div>
 
               <div class="form-group row">
                 <label class="col-lg-1 col-sm-2 col-xs-4 col-form-label">Conductor</label>
                 <div class="col-lg-6 col-sm-10 col-xs-8">
-                  <input type="text" class="form-control nuevoChofer" id="nuevoChofer" name="nuevoChofer"  placeholder="Chofer" required>
+                  <input type="text" class="form-control nuevoChofer" id="nuevoChofer" name="nuevoChofer" value="<?php echo $NR["chofer"]; ?>" required>
                 </div>
               </div>
               
               <div class="form-group row">
                 <label class="col-lg-1 col-sm-2 col-xs-4 col-form-label">Glosa</label>
                 <div class="col-lg-6 col-sm-10 col-xs-8">
-                  <textarea class="form-control" rows="3" id="nuevaGLosa" name="nuevaGlosa" placeholder="Enter ..." required></textarea>
+                  <textarea class="form-control" rows="3" id="nuevaGLosa" name="nuevaGlosa" required><?php echo $NR["glosa1"]; ?></textarea>
                 </div>
               </div>
                
@@ -289,14 +294,8 @@
           </div>
 
           <?php 
-            
-            $item = null;
-            $valor = null;
-
-            //$respuesta = ControladorProductos::ctrMostrarProductos($item, $valor);
-            //var_dump($respuesta);
-            $CrearNR = new  ControladorNotaRemision();
-            $CrearNR -> ctrCrearNotasRemision();
+            //$EditarNR = new  ControladorNotaRemision();
+            //$EditarNR -> ctrEditarNotasRemision();
 
           ?>
         </form>

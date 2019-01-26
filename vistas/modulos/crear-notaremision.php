@@ -245,7 +245,7 @@
               <div class="form-group row">
                 <label class="col-lg-1 col-sm-2 col-xs-4 col-form-label">Glosa</label>
                 <div class="col-lg-6 col-sm-10 col-xs-8">
-                  <textarea class="form-control" rows="3" id="nuevaGLosa" name="nuevaGlosa" placeholder="Enter ..." required></textarea>
+                  <textarea class="form-control" rows="3" id="nuevaGLosa" name="nuevaGlosa" value=" " ></textarea>
                 </div>
               </div>
                
@@ -289,9 +289,9 @@
             <input type="hidden" id="listaProductos" name="listaProductos">
               
             <div class="box-footer">
-              <button type="button" class="btn btn-warning pull-left"><i class="fa fa-print"></i> Imprimir</button>
+              <!--<button type="button" class="btn btn-warning pull-left"><i class="fa fa-print"></i> Imprimir</button>
               <button type="button" class="btn btn-success pull-left"><i class="fa fa-check"></i> Postear</button>
-
+              -->
               <button type="submit" class="btn btn-primary pull-right  GuardarLinNR"><i class="fa fa-save"></i> Guardar</button>
 
             </div>
