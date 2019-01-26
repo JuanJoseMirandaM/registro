@@ -3,13 +3,13 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Crear Notas de Remision
+      Editar Notas de Remision
     </h1>
 
     <ol class="breadcrumb">
       <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
       <li><a href="notaremision"><i class="fa fa-dashboard"></i>Notas de Remision</a></li>
-      <li class="active">Crear Notas de Remision</li>
+      <li class="active">Editar Notas de Remision</li>
     </ol>
   </section>
 
@@ -32,7 +32,16 @@
             <div class="box-body">
                      
               <div class="form-group row">
-                    
+                <?php
+
+                    $item = "idNR";
+                    $valor = $_GET['idNR'];
+                    $orden = true;
+
+                    $NR = ControladorNotaRemision::ctrMostrarNotasRemision($item, $valor, $orden);
+                    //var_dump($NR);
+                
+                ?>
                 <div class="col-lg-3  col-sm-4 col-xs-10" style="padding-right: 0px">
                   <div class="input-group">
 
@@ -48,8 +57,8 @@
                 <div class="col-lg-3 col-sm-4 col-xs-10" style="padding-right: 0px">
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                    <input type="text" class="form-control  nuevoUsuario" id="nuevoUsuario" name="nuevoUsuario" value="<?php echo $_SESSION["nombre"]; ?>" readonly>
-                    <input type="hidden" class="nuevoIdU" name="idUsuario" id="idUsuario" value="<?php echo $_SESSION["id"]; ?>">    
+                    <input type="text" class="form-control  nuevoUsuario" id="nuevoUsuario" name="nuevoUsuario" value="<?php echo $NR["usuario"]; ?>" readonly>
+                    <input type="hidden" class="nuevoIdU" name="idUsuario" id="idUsuario" value="<?php echo $NR["login"]; ?>">    
                   </div>
                 </div>
 
@@ -62,7 +71,7 @@
                   <div class="input-group col-lg-12 col-sm-12 col-xs-12">
                         
                     <label>Tipo</label>
-                    <select name="nuevoTipo" id="nuevoTipo" class="form-control  nuevoTipo" style="width: 100%;" required>
+                    <select name="nuevaTipo" id="nuevoTipo" class="form-control  nuevoTipo" style="width: 100%;" required>
                       <option value="NR">Nota Remision</option>
                     </select>
 
@@ -75,7 +84,7 @@
                     <div class="input-group-addon">
                       <i class="fa fa-calendar"></i>
                     </div>
-                    <input type="text" class="form-control pull-rigft nuevaFecha" id="datepicker" name="nuevaFecha">
+                    <input type="text" class="form-control pull-rigft nuevaFecha" id="datepicker" name="nuevaFecha" value="<?php echo $NR["fecha"]; ?>">
 
                   </div>
                       
@@ -86,34 +95,11 @@
                   <div class="input-group">
                         
                     <label>Numero</label>
-                    <?php
-
-                    $item = null;
-                    $valor = null;
-                    $orden = true;
-
-                    $ventas = ControladorNotaRemision::ctrMostrarNotasRemision($item, $valor, $orden);
                     
-                    if(!$ventas){
 
-                      echo '<input type="text" class="form-control nuevoNumero" id="nuevoNumero" name="nuevoNumero" value="1001" required readonly>';
-                      echo '<input type="hidden" class="form-control nuevoIdNR" id="nuevoIdNR" name="nuevoIdNR" value="1">';
-
-                    }else{
-
-                      foreach ($ventas as $key => $value) {    
-
-                      }
-
-                      $codigo = $value["automatico"] + 1;
-                      $idNR = $value["idNR"] + 1;
-
-                      echo '<input type="text" class="form-control nuevoNumero" id="nuevoNumero" name="nuevoNumero" value="'.$codigo.'" required readonly>';
+                      <input type="text" class="form-control nuevoNumero" id="nuevoNumero" name="nuevoNumero" required readonly value="<?php echo $NR["automatico"]; ?>">
                   
-                      echo '<input type="hidden" class="form-control nuevoIdNR" id="nuevoIdNR" name="nuevoIdNR" value="'.$idNR.'">';
-                    }
-
-                    ?>
+                      <input type="hidden" class="form-control nuevoIdNR" id="nuevoIdNR" name="nuevoIdNR" value="<?php echo $NR["idNR"]; ?>">
                     
                         
                   </div>
@@ -121,7 +107,7 @@
                   <div class="input-group">
                         
                     <label>Numero NR</label>
-                    <input type="text" class="form-control nuevoNR" id="nuevoNR" name="nuevoNR"  placeholder="Numero NR" required>
+                    <input type="text" class="form-control nuevoNR" id="nuevoNR" name="nuevoNR"  placeholder="Numero NR" required value="<?php echo $NR["numeroNR"]; ?>">
 
                   </div>
 
@@ -141,7 +127,7 @@
                   
                   <div class="input-group">
                     <label>Numero DC</label>  
-                    <input type="text" class="form-control nuevoDC" id="nuevoDC" name="nuevoDC"  placeholder="Numero DC" required>
+                    <input type="text" class="form-control nuevoDC" id="nuevoDC" name="nuevoDC"  placeholder="Numero DC" required value="<?php echo $NR["numeroDC"]; ?>">
                   </div>
 
                 </div>
@@ -159,7 +145,7 @@
                         
                     <label>Numero SAP</label>
                         
-                    <input type="text" class="form-control nuevoSAP" id="nuevoSAP" name="nuevoSAP"  placeholder="Numero SAP" required>
+                    <input type="text" class="form-control nuevoSAP" id="nuevoSAP" name="nuevoSAP"  placeholder="Numero SAP" required value="<?php echo $NR["numeroSAP"]; ?>">
 
                   </div>   
 
@@ -171,6 +157,7 @@
                 <label class="col-lg-1 col-sm-2 col-xs-4 col-form-label">Flete de</label>
                 <div class="col-lg-2 col-sm-2 col-xs-8">
                   <select name="nuevaFlete" id="nuevaFlete" class="form-control  nuevaFlete" style="width: 100%;" required>
+                    <option value="<?php echo $NR["tipo1"]; ?>" selected><?php echo $NR["tipo1"]; ?></option>
                     <option value="IDA">Ida</option>
                     <option value="RETORNO">Retorno</option>
                     <option value="DE IDA Y VUELTA">Ida y vuelta</option>
@@ -179,7 +166,8 @@
                 <label class="col-lg-1 col-sm-1 col-xs-2 col-form-label">Origen</label>
                 <div class="col-lg-2 col-sm-3 col-xs-4">
                   <select name="nuevoOrigen" id="nuevoOrigen" class="form-control  nuevoOrigen" style="width: 100%;" required>
-                    <option value="LPZ" selected>La Paz</option>
+                    <option value="<?php echo $NR["origen"]; ?>" selected><?php echo $NR["origen"]; ?></option>
+                    <option value="LPZ" >La Paz</option>
                     <option value="ORU">Oruro</option>
                     <option value="CBB">Cochabamba</option>
                     <option value="SCZ">Santa Cruz</option>
@@ -191,8 +179,9 @@
                 <label class="col-lg-1 col-sm-1 col-xs-2 col-form-label">Destino</label>
                 <div class="col-lg-2 col-sm-3 col-xs-4">
                   <select name="nuevoDestino" id="nuevoDestino" class="form-control  nuevoDestino" style="width: 100%;" required>
+                    <option value="<?php echo $NR["destino"]; ?>" selected><?php echo $NR["destino"]; ?></option>
                     <option value="LPZ">La Paz</option>
-                    <option value="ORU" selected>Oruro</option>
+                    <option value="ORU">Oruro</option>
                     <option value="CBB">Cochabamba</option>
                     <option value="SCZ">Santa Cruz</option>
                     <option value="POT">Potosi</option>
@@ -230,9 +219,11 @@
                 <div class="col-lg-4 col-sm-6 col-xs-12 ">
                   <input type="text" class="form-control nuevoDueno" id="nuevoDueno" name="nuevoDueno"  placeholder="Dueño" readonly required>
                   <input type="hidden" class="nuevoCodCamion" id="nuevoCodCamion" name="nuevoCodCamion" value="">
-                  <input type="hidden" class="nuevaPlacaCamion" id="nuevaPlacaCamion" name="nuevaPlacaCamion" value="">
                 </div>
 
+                <div class="col-lg-0 col-sm-0 col-xs-0 ">
+                  <input type="hidden" class="nuevoCodCamion2" id="nuevoCodCamion2" name="nuevoCodCamion2" value="">
+                </div>
               </div>
 
               <div class="form-group row">

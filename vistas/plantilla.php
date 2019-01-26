@@ -146,6 +146,7 @@
          $_GET["ruta"] == "proveedores"||
          $_GET["ruta"] == "notaremision"||
          $_GET["ruta"] == "crear-notaremision"||
+         $_GET["ruta"] == "editar-notaremision"||
     
 
          $_GET["ruta"] == "reportes"||

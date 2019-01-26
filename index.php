@@ -11,6 +11,4 @@ require_once "modelos/proveedores.modelo.php";
 require_once "modelos/notasRemision.modelo.php";
 
 $plantilla = new ControladorPlantilla();
-$plantilla -> ctrPlantilla();
-
-		
+$plantilla -> ctrPlantilla();	

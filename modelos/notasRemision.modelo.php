@@ -7,7 +7,7 @@ class ModeloNotaRemision{
 	=          MOSTRAR NOTAS REMISION          =
 	==========================================*/
 	
-	static public function mdlMostrarNotasRemision($tabla, $item, $valor){
+	static public function mdlMostrarNotasRemision($tabla, $item, $valor, $orden){
 		if($item != null){
 			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
 			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
@@ -15,8 +15,14 @@ class ModeloNotaRemision{
 			$stmt -> execute();
 
 			return $stmt -> fetch();
+		}else if($orden == true){
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY idNR ASC");
+
+			$stmt -> execute();
+
+			return $stmt -> fetchall();
 		}else{
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY idNR DESC");
 
 			$stmt -> execute();
 
@@ -34,8 +40,8 @@ class ModeloNotaRemision{
  	* REGISTRAR DE COMPROBANTE
  	*/
 	static public function mdlIngresarNotaRemision($tabla, $datos){
-		//var_dump($datos);
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(idNR, automatico, clasificador, cotizacion, estado, fecha, usuario, tipo1, login, moneda, tipo2, sistema, numeroNR, numeroDC, numeroSAP, fcha_registro, origen, destino, cod_Camion, chofer) VALUES (:idNR, :automatico, :clasificador, :cotizacion, :estado, :fecha, :usuario, :tipo1, :login, :moneda, :tipo2, :sistema, :numeroNR, :numeroDC, :numeroSAP, :fcha_registro, :origen, :destino, :placa, :chofer)");
+		
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (idNR, automatico, clasificador, cotizacion, estado, fecha, usuario, glosa1,  tipo1, login, moneda, tipo2, sistema, numeroNR, numeroDC, numeroSAP, fcha_registro, origen, destino, placa, cod_Camion, chofer, detalle) VALUES (:idNR, :automatico, :clasificador, :cotizacion, :estado, :fecha, :usuario, :glosa1, :tipo1, :login, :moneda, :tipo2, :sistema, :numeroNR, :numeroDC, :numeroSAP, :fcha_registro, :origen, :destino, :placa, :cod_Camion, :chofer, :detalle)");
 
 			$stmt -> bindParam(":idNR", $datos["idNR"], PDO::PARAM_STR);
 			$stmt -> bindParam(":automatico", $datos["automatico"], PDO::PARAM_STR);
@@ -44,6 +50,7 @@ class ModeloNotaRemision{
 			$stmt -> bindParam(":estado", $datos["estado"], PDO::PARAM_STR);
 			$stmt -> bindParam(":fecha", $datos["fecha"], PDO::PARAM_STR);
 			$stmt -> bindParam(":usuario", $datos["usuario"], PDO::PARAM_STR);
+			$stmt -> bindParam(":glosa1", $datos["glosa1"], PDO::PARAM_STR);
 			$stmt -> bindParam(":tipo1", $datos["tipo1"], PDO::PARAM_STR);
 			$stmt -> bindParam(":login", $datos["login"], PDO::PARAM_STR);
 			$stmt -> bindParam(":moneda", $datos["moneda"], PDO::PARAM_STR);
@@ -60,8 +67,11 @@ class ModeloNotaRemision{
 			$stmt -> bindParam(":origen", $datos["origen"], PDO::PARAM_STR);
 			$stmt -> bindParam(":destino", $datos["destino"], PDO::PARAM_STR);
 			$stmt -> bindParam(":placa", $datos["placa"], PDO::PARAM_STR);
+			$stmt -> bindParam(":cod_Camion", $datos["cod_Camion"], PDO::PARAM_STR);
 			$stmt -> bindParam(":chofer", $datos["chofer"], PDO::PARAM_STR);
+			$stmt -> bindParam(":detalle", $datos["detalle"], PDO::PARAM_STR);
 
+		//var_dump($stmt);	
 		if ($stmt->execute()) {
 			return "ok";
 		}else{

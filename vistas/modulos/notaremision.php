@@ -29,9 +29,11 @@
             <tr>
               <th style="width:10px">#</th>
               <th>Clasificador</th>
+              <th>Numero</th>
+              
               <th>Fecha</th>
               <th>Tipo</th>
-              <th>Numero</th>
+              
               <th>NumeroNR</th>
               <th>NumeroDC</th>
               <th>NumeroSAP</th>
