@@ -10,6 +10,7 @@
       <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
       <li class="active">Administrar Usuarios</li>
     </ol>
+
   </section>
 
   <!-- Main content -->
@@ -72,12 +73,18 @@
 
               echo '<td>'.$value["ultimo_login"].'</td>
               <td>
+                
                 <div class="btn-group">
+                  
                   <button class="btn btn-warning btnEditarUsuario" idUsuario="'.$value["idUsuario"].'" data-toggle="modal" data-target=#modalEditarUsuario><i class="fa fa-pencil"></i></button>
+                  
                   <button class="btn btn-danger btnEliminarUsuario" idUsuario="'.$value["idUsuario"].'" fotoUsuario="'.$value["foto"].'" usuario="'.$value["usuario"].'" ><i class="fa fa-times"></i></button>
+                
                 </div>
+              
               </td>
-            </tr>';
+              
+              </tr>';
             }
 
           ?>  
@@ -92,6 +99,7 @@
         Footer
       </div>
     -- /.box-footer-->
+
     </div>
   <!-- /.box -->
   </section>
@@ -171,7 +179,7 @@
                   <select name="nuevoPerfil" class="form-control input-lg">
                     <option value="">Seleccionar perfil</option>
                     <option value="Administrador">Administrador</option>
-                    <option value="Contador">Usuario</option>
+                    <option value="Usuario">Usuario</option>
                   </select>
                 </div>
               </div>

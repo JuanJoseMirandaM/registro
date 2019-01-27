@@ -39,6 +39,7 @@
               <th>NumeroSAP</th>
               <th>Origen-Destino</th>
               <!--<th>Placa</th>
+                dt-responsive
               <th>Chofer</th>-->
               <th>Acciones</th>
             </tr>

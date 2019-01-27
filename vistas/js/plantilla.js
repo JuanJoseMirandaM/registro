@@ -77,9 +77,20 @@ $('#daterange-btn').daterangepicker(
   function (start, end) {
     $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
   }
-  )
+)
 
-    //Date picker
-    $('#datepicker').datepicker({
-      autoclose: true
-    })
+//Date picker
+$('#datepicker').datepicker({
+	autoclose: true,
+    format: 'mm/dd/yyyy',
+    startDate: '-3d'
+})
+$('.datepicker').datepicker({
+	todayHighlight: true,
+	autoclose: true,
+    format: 'dd/mm/yyyy',
+    startDate: '-3d',
+    language: 'es'
+})
+
+$("#nuevaFecha").datepicker().datepicker("setDate", new Date());

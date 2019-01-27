@@ -28,13 +28,18 @@ class ControladorNotaRemision{
 			){ 	
 			    
 			   	$tabla = "notaremision";
-			
+				$date = $_POST["nuevaFecha"];
+				$dateinput = explode('/', $date);
+				$ukdate = $dateinput[2].'/'.$dateinput[1].'/'.$dateinput[0];
+				var_dump($ukdate);
+				//$fecha = $date->format('Y/m/d');
+				
 			   	$datos = array(	"idNR" => $_POST["nuevoIdNR"],
 								"automatico" => $_POST["nuevoNumero"],
 								"clasificador" => $_POST["nuevaEmpresa"],
 								"cotizacion" => $_POST["nuevoTC"],
 								"estado" => "D",
-								"fecha" => date('Y/m/d', strtotime($_POST["nuevaFecha"])),
+								"fecha" => $ukdate,
 								"usuario" => $_POST["nuevoUsuario"],
 								"glosa1" => $_POST["nuevaGlosa"],
 								"tipo1" => $_POST["nuevaFlete"],
@@ -54,7 +59,7 @@ class ControladorNotaRemision{
 								"detalle" => $_POST["listaProductos"]
 
 				);
-
+			   	//var_dump($datos["fecha"]);
 				$respuesta = ModeloNotaRemision::mdlIngresarNotaRemision($tabla, $datos);
 				
 				if ($respuesta == "ok") {
@@ -119,13 +124,16 @@ class ControladorNotaRemision{
 			){ 	
 			    
 			   	$tabla = "notaremision";
-			
+				$date = $_POST["nuevaFecha"];
+				$dateinput = explode('/', $date);
+				$ukdate = $dateinput[2].'/'.$dateinput[1].'/'.$dateinput[0];
+
 			   	$datos = array(	"idNR" => $_POST["editarIdNR"],
 								"automatico" => $_POST["nuevoNumero"],
 								"clasificador" => $_POST["nuevaEmpresa"],
 								"cotizacion" => $_POST["nuevoTC"],
 								"estado" => "D",
-								"fecha" => date('Y/m/d', strtotime($_POST["nuevaFecha"])),
+								"fecha" => $ukdate,
 								"usuario" => $_POST["nuevoUsuario"],
 								"glosa1" => $_POST["nuevaGlosa"],
 								"tipo1" => $_POST["nuevaFlete"],

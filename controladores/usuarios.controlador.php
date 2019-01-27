@@ -54,7 +54,7 @@ class ControladorUsuarios{
 
 								echo '<script>
 
-									window.location = "productos";
+									window.location = "inicio";
 
 								</script>';
 
@@ -62,7 +62,7 @@ class ControladorUsuarios{
 
 								echo '<script>
 
-									window.location = "ventas";
+									window.location = "notasremision";
 
 								</script>';
 

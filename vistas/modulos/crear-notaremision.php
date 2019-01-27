@@ -72,11 +72,13 @@
 
                   <div class="input-group date col-lg-12 col-sm-12 col-xs-12">
                         
-                    <div class="input-group-addon">
+                    <!--<div class="input-group-addon">
                       <i class="fa fa-calendar"></i>
                     </div>
                     <input type="text" class="form-control pull-rigft nuevaFecha" id="datepicker" name="nuevaFecha">
-
+                    <input data-provide="datepicker" class="form-control pull-rigft nuevaFecha" id="nuevaFecha" name="nuevaFecha"> 
+                    <input type="text" class="form-control pull-rigft nuevaFecha">-->
+                    <input type="text" class="datepicker form-control pull-rigft nuevaFecha" id="nuevaFecha" name="nuevaFecha">
                   </div>
                       
                 </div>
@@ -96,7 +98,7 @@
                     
                     if(!$ventas){
 
-                      echo '<input type="text" class="form-control nuevoNumero" id="nuevoNumero" name="nuevoNumero" value="1001" required readonly>';
+                      echo '<input type="number" class="form-control nuevoNumero" id="nuevoNumero" name="nuevoNumero" value="1001" required readonly>';
                       echo '<input type="hidden" class="form-control nuevoIdNR" id="nuevoIdNR" name="nuevoIdNR" value="1">';
 
                     }else{
@@ -108,7 +110,7 @@
                       $codigo = $value["automatico"] + 1;
                       $idNR = $value["idNR"] + 1;
 
-                      echo '<input type="text" class="form-control nuevoNumero" id="nuevoNumero" name="nuevoNumero" value="'.$codigo.'" required readonly>';
+                      echo '<input type="number" class="form-control nuevoNumero" id="nuevoNumero" name="nuevoNumero" value="'.$codigo.'" required readonly>';
                   
                       echo '<input type="hidden" class="form-control nuevoIdNR" id="nuevoIdNR" name="nuevoIdNR" value="'.$idNR.'">';
                     }
@@ -121,7 +123,7 @@
                   <div class="input-group">
                         
                     <label>Numero NR</label>
-                    <input type="text" class="form-control nuevoNR" id="nuevoNR" name="nuevoNR"  placeholder="Numero NR" required>
+                    <input type="number" class="form-control nuevoNR" id="nuevoNR" name="nuevoNR"  placeholder="Numero NR" required>
 
                   </div>
 
@@ -141,7 +143,7 @@
                   
                   <div class="input-group">
                     <label>Numero DC</label>  
-                    <input type="text" class="form-control nuevoDC" id="nuevoDC" name="nuevoDC"  placeholder="Numero DC" required>
+                    <input type="number" class="form-control nuevoDC" id="nuevoDC" name="nuevoDC"  placeholder="Numero DC" value="0" required>
                   </div>
 
                 </div>
@@ -159,7 +161,7 @@
                         
                     <label>Numero SAP</label>
                         
-                    <input type="text" class="form-control nuevoSAP" id="nuevoSAP" name="nuevoSAP"  placeholder="Numero SAP" required>
+                    <input type="number" class="form-control nuevoSAP" id="nuevoSAP" name="nuevoSAP"  placeholder="Numero SAP" required>
 
                   </div>   
 
@@ -264,17 +266,38 @@
             <!--=======================================
               =             CABECERA DETALLE            =
               ========================================-->
-            <div class="box-body table-responsive no-padding">
-              <table class="table table-hover tablaCrearNR">
-                <thead>
-                  <tr>
-                    <th width="10"></th>
-                    <th WIDTH="150">Cantidad</th>
-                    <th WIDTH="270">Codigo</th>
-                    <th WIDTH="600">Detalle</th>                 
-                  </tr>
-                </thead>
-              </table>  
+            <div class="row" style="padding:5px 15px">
+
+              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 ingresoCantidad">
+
+                <div class="form-group">
+                  
+                  <label>Cantidad</label>
+
+                </div>
+                    
+              </div>
+
+              <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6" style="padding-right:0px">
+                  
+                <div class="form-group">
+                  
+                  <label>Codigo</label>
+
+                </div>
+
+              </div>
+
+              <div class="col-lg-6 col-md-6 col-sm-5 col-xs-10 ingresoDetalle" style="padding-right:0px">
+
+                <div class="form-group">
+                  
+                  <label>Detalle</label>
+
+                </div>
+                     
+              </div>
+
             </div>
             <!--=====================================
                   ENTRADA PARA AGREGAR PRODUCTO

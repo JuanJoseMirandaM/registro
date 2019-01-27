@@ -163,13 +163,13 @@ $(".btnAgregarProducto").click(function(){
 
               '<!-- Cantidad del producto -->'+
 
-              '<div class="col-xs-2 ingresoCantidad">'+
+              '<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 ingresoCantidad">'+
 
                 '<div class="input-group">'+
                   
                   '<span class="input-group-addon"><button type="button" class="btn btn-danger btn-xs quitarDetalle" idProducto><i class="fa fa-times"></i></button></span>'+
 
-                  '<input type="number" class="form-control nuevaCantidadProducto" name="nuevaCantidadProducto" min="1" value="1" stock nuevoStock required>'+
+                  '<input type="number" class="form-control nuevaCantidadProducto" name="nuevaCantidadProducto" value="0" stock nuevoStock required>'+
 
                   '</select>'+  
 
@@ -180,7 +180,7 @@ $(".btnAgregarProducto").click(function(){
 
               '<!-- Codigo del producto -->'+
               
-              '<div class="col-xs-3" style="padding-right:0px">'+
+              '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 " style="padding-right:0px">'+
               
                 '<div class="input-group">'+
 
@@ -198,7 +198,7 @@ $(".btnAgregarProducto").click(function(){
 
               '<!-- Descripcion del producto -->'+
 
-              '<div class="col-xs-6 ingresoDetalle" style="padding-right:0px">'+
+              '<div class="col-lg-5 col-md-5 col-sm-5 col-xs-10 ingresoDetalle" style="padding-right:0px">'+
 
                 '<div class="input-group col-xs-12">'+
                      

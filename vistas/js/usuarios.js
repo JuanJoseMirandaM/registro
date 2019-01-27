@@ -41,6 +41,8 @@ $(".nuevaFoto").change(function(){
 /*======================================
 =          EDITAR USUARIO              =
 ======================================*/
+//$(".formularioUsuarios").on("click", "button.btnEditarUsuario", function (){
+
 $(".btnEditarUsuario").click(function(){
 	var idUsuario = $(this).attr("idUsuario");
 		

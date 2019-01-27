@@ -110,9 +110,13 @@
 
   <!-- bootstrap datepicker -->
   <script src="vistas/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+  <script src="vistas/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.es.js" charset="UTF-8"></script>
+
 
   <!-- jQuery number-->
   <script src="vistas/plugins/jquery/jquery.min.js"></script>
+
+
   
   <!--====  End of PLUGIN JAVA SCRIPT  ====-->
 

@@ -57,7 +57,9 @@
                 <div class="col-lg-3 col-sm-4 col-xs-10" style="padding-right: 0px">
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                    
                     <input type="text" class="form-control  nuevoUsuario" id="nuevoUsuario" name="nuevoUsuario" value="<?php echo $NR["usuario"]; ?>" readonly>
+                    
                     <input type="hidden" class="nuevoIdU" name="idUsuario" id="idUsuario" value="<?php echo $NR["login"]; ?>">    
                   </div>
                 </div>
@@ -80,12 +82,11 @@
                   <label>Fecha</label>
 
                   <div class="input-group date col-lg-12 col-sm-12 col-xs-12">
-                        
-                    <div class="input-group-addon">
-                      <i class="fa fa-calendar"></i>
-                    </div>
-                    <input type="text" class="form-control pull-rigft nuevaFecha" id="datepicker" name="nuevaFecha" value="<?php echo $NR["fecha"]; ?>">
+                    <?php 
+                    $date = date_create($NR["fecha"]);
 
+                     ?>
+                    <input class="datepicker form-control pull-rigft nuevaFecha" id="editarFecha" name="nuevaFecha" value="<?php echo date_format($date, 'd/m/y'); ?>">
                   </div>
                       
                 </div>
@@ -97,7 +98,7 @@
                     <label>Numero</label>
                     
 
-                      <input type="text" class="form-control nuevoNumero" id="nuevoNumero" name="nuevoNumero" required readonly value="<?php echo $NR["automatico"]; ?>">
+                      <input type="number" class="form-control nuevoNumero" id="nuevoNumero" name="nuevoNumero" required readonly value="<?php echo $NR["automatico"]; ?>">
                   
                       <input type="hidden" class="form-control editarIdNR" id="editarIdNR" name="editarIdNR" value="<?php echo $NR["idNR"]; ?>">
                     
@@ -107,7 +108,7 @@
                   <div class="input-group">
                         
                     <label>Numero NR</label>
-                    <input type="text" class="form-control nuevoNR" id="nuevoNR" name="nuevoNR"  placeholder="Numero NR" required value="<?php echo $NR["numeroNR"]; ?>">
+                    <input type="number" class="form-control nuevoNR" id="nuevoNR" name="nuevoNR"  placeholder="Numero NR" required value="<?php echo $NR["numeroNR"]; ?>">
 
                   </div>
 
@@ -127,7 +128,7 @@
                   
                   <div class="input-group">
                     <label>Numero DC</label>  
-                    <input type="text" class="form-control nuevoDC" id="nuevoDC" name="nuevoDC"  placeholder="Numero DC" required value="<?php echo $NR["numeroDC"]; ?>">
+                    <input type="number" class="form-control nuevoDC" id="nuevoDC" name="nuevoDC"  placeholder="Numero DC" required value="<?php echo $NR["numeroDC"]; ?>">
                   </div>
 
                 </div>
@@ -145,7 +146,7 @@
                         
                     <label>Numero SAP</label>
                         
-                    <input type="text" class="form-control nuevoSAP" id="nuevoSAP" name="nuevoSAP"  placeholder="Numero SAP" required value="<?php echo $NR["numeroSAP"]; ?>">
+                    <input type="number" class="form-control nuevoSAP" id="nuevoSAP" name="nuevoSAP"  placeholder="Numero SAP" required value="<?php echo $NR["numeroSAP"]; ?>">
 
                   </div>   
 
@@ -260,17 +261,39 @@
             <!--=======================================
               =             CABECERA DETALLE            =
               ========================================-->
-            <div class="box-body table-responsive no-padding">
-              <table class="table table-hover tablaCrearNR">
-                <thead>
-                  <tr>
-                    <th width="10"></th>
-                    <th WIDTH="150">Cantidad</th>
-                    <th WIDTH="270">Codigo</th>
-                    <th WIDTH="600">Detalle</th>                 
-                  </tr>
-                </thead>
-              </table>  
+            
+            <div class="row" style="padding:5px 15px">
+
+              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 ingresoCantidad">
+
+                <div class="form-group">
+                  
+                  <label>Cantidad</label>
+
+                </div>
+                    
+              </div>
+
+              <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6" style="padding-right:0px">
+                  
+                <div class="form-group">
+                  
+                  <label>Codigo</label>
+
+                </div>
+
+              </div>
+
+              <div class="col-lg-6 col-md-6 col-sm-5 col-xs-10 ingresoDetalle" style="padding-right:0px">
+
+                <div class="form-group">
+                  
+                  <label>Detalle</label>
+
+                </div>
+                     
+              </div>
+
             </div>
             <!--=====================================
                   ENTRADA PARA AGREGAR PRODUCTO
@@ -285,7 +308,7 @@
               foreach ($listaProducto as $key => $value) {
                 echo '<div class="row" style="padding:5px 15px">
 
-                  <div class="col-xs-2 ingresoCantidad">
+                  <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 ingresoCantidad">
 
                     <div class="input-group">
                       
@@ -299,7 +322,7 @@
                     
                   </div>
 
-                  <div class="col-xs-3" style="padding-right:0px">
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6" style="padding-right:0px">
                   
                     <div class="input-group col-xs-12">
 
@@ -313,7 +336,7 @@
 
                   </div>
 
-                  <div class="col-xs-6 ingresoDetalle" style="padding-right:0px">
+                  <div class="col-lg-5 col-md-5 col-sm-5 col-xs-10 ingresoDetalle" style="padding-right:0px">
 
                     <div class="input-group col-xs-12">
                          
