@@ -381,8 +381,8 @@ $(".tablaNotasRemision tbody").on("click",".btnEditarNR",function(){
 /*======================================
 =         IMPRIMIR NOTA REMISION         =
 ======================================*/
-$(".tablaComprobantes").on("click",".btnImprimirComprobante",function(){
-    var idComprobante = $(this).attr("idComprobante");
-
-    window.open("extensiones/tcpdf/pdf/comprobante.php?codigo="+idComprobante,"_blank");
+$(".tablaNotasRemision").on("click",".btnImprimirNR",function(){
+    //var idComprobante = $(this).attr("idComprobante");
+    var idNR = $(this).attr("idNR");
+    window.open("extensiones/dompdf1.php?idNR="+idNR,"_blank");
 })
