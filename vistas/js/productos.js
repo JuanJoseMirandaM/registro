@@ -1,7 +1,8 @@
 /*======================================
 =          EDITAR PREODUCTO            =
 ======================================*/
-$(".btnEditarProducto").click(function(){
+$(".tablaProductos").on("click",".btnEditarProducto",function(){
+    //$(".btnEditarProducto").click(function(){
 	var cod_producto = $(this).attr("idProducto");
 	
 	var datos = new FormData();
@@ -37,7 +38,8 @@ $(".btnEditarProducto").click(function(){
 /*======================================
 =          ACTIVAR PRODUCTO            =
 ======================================*/
-$(".btnActivarProducto").click(function(){
+$(".tablaProductos").on("click",".btnActivarProducto",function(){
+	//$(".btnActivarProducto").click(function(){
 	var cod_producto = $(this).attr("idProducto"); 
 	var estadoProducto = $(this).attr("estadoProducto");
 
@@ -74,7 +76,8 @@ $(".btnActivarProducto").click(function(){
 /*========================================
 =            ELIMINAR PRODUCTO           =
 ========================================*/
-$(".btnEliminarProducto").click(function(){
+$(".tablaProductos").on("click",".btnEliminarProducto",function(){
+	//$(".btnEliminarProducto").click(function(){
 	var idProducto = $(this).attr("idProducto");
 	
 	swal({

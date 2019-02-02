@@ -1,107 +1,314 @@
+<?php 
+require_once "../controladores/notasRemision.controlador.php";
+require_once "../modelos/notasRemision.modelo.php";
+require_once "../controladores/proveedores.controlador.php";
+require_once "../modelos/proveedores.modelo.php";
+
+require_once 'dompdf/lib/html5lib/Parser.php';
+require_once 'dompdf/lib/php-font-lib/src/FontLib/Autoloader.php';
+require_once 'dompdf/lib/php-svg-lib/src/autoload.php';
+require_once 'dompdf/src/Autoloader.php';
+
+Dompdf\Autoloader::register();
+
+// reference the Dompdf namespace
+use Dompdf\Dompdf;
+
+
+class imprimirNR{
+
+
+public $idNR;
+
+public function traerImpresionidNR(){
+
+$item = "idNR";
+$valor = $this->idNR;	
+$orden = false;
+$respuesta = ControladorNotaRemision::ctrMostrarNotasRemision($item, $valor, $orden);
+
+
+$itemProvee = "cod_provee";
+$valorProvee = $respuesta["cod_Camion"];	
+
+$provee = ControladorProveedores::ctrMostrarProveedores($itemProvee, $valorProvee);
+
+// Instanciamos un objeto de la clase DOMPDF.
+
+$pdf = new Dompdf();
+// Definimos el tamaño y orientación del papel que queremos.
+$pdf->setPaper('letter', 'portrait');
+
+// Introducimos HTML de prueba
+
+//<<<'ENDHTML'
+$html = '
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>Nota de Remision</title>
+		<style>
+			html {
+			margin: 0;
+			}
+			body {
+				border: 0px solid black;
+				font-family: "Arial", serif;
+				margin: 15mm 15mm 15mm 20mm;
+				<!--arriba derecha abajo isquierda-->
+			}
+			hr {
+				page-break-after: always;
+				border: 0;
+				margin: 0;
+				padding: 0;
+			}
+			table {
+				width: 100%;
+
+			}
+			th{
+			  border: 1px solid #000080;
+			  border-collapse: collapse;
+			  padding: 5px;
+			  text-align: left;
+			  line-height:5px;
+			  background-color:white;
+			  font-size:9px;
+			}
+			td {
+			  padding: 3px;
+			  text-align: left;
+			  line-height:5px;
+			  background-color:white;
+			  font-size:9px;
+			}
+
+			.contenedor{
+			  height: 40%;
+			  background-color: #6A737C;
+			  margin: 1% 1%;
+			}
+			#header { position: fixed; left: 20mm; top: 15mm; right: 15mm; height: 30mm; background-color: write; text-align: center; }
+
+		    #footer { position: fixed; left: 0px; bottom: 0px; right: 0px; height: 30mm; background-color: write; }
+
+		</style>
+		
 	</head>
 
 <body>
 
-<table border="">
+<script type="text/php">
+    if (isset($pdf)) {
+        $font = $fontMetrics->getFont("Arial", "bold");
+        $pdf->page_text(555, 740, "Pagina {PAGE_NUM}/{PAGE_COUNT}", $font, 7, array(0, 0, 0));
+    }
+</script>
+<div  class="contenedor">
+<!--<div id="header" >
+    <table width="100%">
 		<tr>
-			<td style="background-color:white; width:600px">
-
-				<div style="font-size:8.5px; text-align:lefth; line-height:15px;">
-					<b>
-					<br>
-					M&D TRANSPORTE NAL. E INTER. SRL
-					<br>
-					Av. Garcia Lanza #60 Zona Achumani
-					<br>
-					NIT: 192822026
-					<br>
-					La PAz - Bolivia
-					</b>
-				</div>
-			</td>
-			
-			<td style="background-color:white; width:150px"></td>
-
-			<td style="background-color:white; width:100px">
-				<div style="font-size:8.5px; text-align:lefth; line-height:15px;">
-					<br>
-					<b>Numero:</b> 111
-					<br>
-					<b>Fecha:</b> 111
-					<br>
-					<b>Estado:</b> 111
-				</div>
-
-			</td>
+			<td style="width:85%"><b>M&D TRANSPORTE NAL. E INTER. SRL</b></td>
+			<td style="width:15%"><b>Lugar:</b> LPZ</td>
 		</tr>
 		<tr>
-			<td colspan="3" style="background-color:white; width:750px" bgcolor="blue">
+			<td style="width:85%"><b>Av. Garcia Lanza #60 Zona Achumani</b></td>
+			<td style="width:15%"><b>Numero:</b></td>
+		</tr>
+		<tr>
+			<td style="width:85%"><b>NIT: 192822026</b></td>
+			<td style="width:15%"><b>Fecha:</b> '.$respuesta["fecha"].'</td>
+		</tr>
+		<tr>
+			<td style="width:85%"><b>La Paz - Bolivia</b></td>
+			<td style="width:15%"><b>Estado:</b> '.$respuesta["estado"].'</td>
+		</tr>
+		<tr>
+			<td style="width:85%"></td>
+			<td style="width:15%"><b>T/C:</b> '.$respuesta["cotizacion"].'</td>
+		</tr>
+
+	</table> 
+</div>
+-->
+
+
+<table>
+	<tr>
+		<td colspan="3" style=" color:#000080; background-color:white; width:100%">
+			<div style="font-size:20px; text-align:center; line-height:15px;">
+				<br>
+				<b>ALBARAN</b>
+			</div>
+		</td>
+	</tr>
+</table>
+
+
+<br>
+<table style="line-height:5px;">
+	<tr>
+		<td width="40%"><b>Numero NR</b> '.$respuesta["numeroNR"].'</td>
+		<td width="40%"><b>Numero DOC</b> '.$respuesta["numeroDC"].'</td>
+		<td width="20%"><b>Nuemro SAP</b> '.$respuesta["numeroSAP"].'</td>
+	</tr>
+	<tr>
+		<td width="40%"><b>Origen:</b> '.$respuesta["origen"].'</td>
+		<td width="40%"><b>Destino:</b> '.$respuesta["destino"].'</td>
+		<td width="20%"><b>Tipo:</b> '.$respuesta["tipo1"].'</td>
+	</tr>
+	<tr>
+		<td width="40%"><b>Placa:</b> '.$respuesta["placa"].'</td>
+		<td colspan="2" width="60%"><b>Contratista:</b> '.$respuesta["cod_Camion"].' - '.$provee["nombre_com"].'</td>
+	</tr>
+	<tr>
+		<td colspan="3" width="100%"><b>Conductor:</b> '.$respuesta["chofer"].'</td>
+	</tr>
+	<tr>
+		<td colspan="3" width="100%"><b>Glosa:</b> '.$respuesta["glosa1"].'</td>
+	</tr>
+</table>
+<br>
+<table style="width:100%; padding: 5px;">
+  <tr>
+    <th style="width:30%">CODIGO</th>
+    <th style="width:50%">DESCRIPCION</th>
+    <th style="width:20%">CANTIDAD</th>
+  </tr>';
+
+$listaProducto = json_decode($respuesta["detalle"], true);
+//var_dump($listaProducto);
+foreach ($listaProducto as $key => $value) {
+ $html .= '<tr>
+		    <td>'.$value["codigo"].'</td>
+		    <td>'.$value["descripcion"].'</td>
+		    <td>'.$value["cantidad"].'</td>
+		  </tr>';
+}
+  
+$html .= '</table>
+
+
+<div id="footer">
+   <table >
+		<tr>
+			<td width="50%">
 				<div style="font-size:15px; text-align:center; line-height:15px;">
 					<br>
-					<b>COMPROBANTE DE TRASPASO</b>
+					<b>RECIBIDO POR</b>
+				</div>
+			</td>
+			<td width="50%">
+				<div style="font-size:15px; text-align:center; line-height:15px;">
+					<br>
+					<b>ENTREGADO POR</b>
 				</div>
 			</td>
 		</tr>
-		<tr>
-			
-			<td colspan="2" style="background-color:white; width:420px">
-				<div style="font-size:8.5px; text-align:lefth; line-height:15px;">
-					<br>
-					<b>Lugar:</b> LPZ
-					<br>
-					<b>Glosa:</b> '.$valor.'
-				</div>
-			</td>
-			<td style="background-color:white; width:120px">
-				<div style="font-size:8.5px; text-align:lefth; line-height:15px;">
-					<br>
-					<b>T/Cambio:</b> $TC
-				</div>
-			</td>	
-		</tr>
-
 	</table>
+</div>
+</div>
+<div class="contenedor">
+    <table>
+	<tr>
+		<td colspan="3" style=" color:#000080; background-color:white; width:100%">
+			<div style="font-size:20px; text-align:center; line-height:15px;">
+				<br>
+				<b>ALBARAN</b>
+			</div>
+		</td>
+	</tr>
+</table>
+
+
+<br>
+<table style="line-height:5px;">
+	<tr>
+		<td width="40%"><b>Numero NR</b> '.$respuesta["numeroNR"].'</td>
+		<td width="40%"><b>Numero DOC</b> '.$respuesta["numeroDC"].'</td>
+		<td width="20%"><b>Nuemro SAP</b> '.$respuesta["numeroSAP"].'</td>
+	</tr>
+	<tr>
+		<td width="40%"><b>Origen:</b> '.$respuesta["origen"].'</td>
+		<td width="40%"><b>Destino:</b> '.$respuesta["destino"].'</td>
+		<td width="20%"><b>Tipo:</b> '.$respuesta["tipo1"].'</td>
+	</tr>
+	<tr>
+		<td width="40%"><b>Placa:</b> '.$respuesta["placa"].'</td>
+		<td colspan="2" width="60%"><b>Contratista:</b> '.$respuesta["cod_Camion"].' - '.$provee["nombre_com"].'</td>
+	</tr>
+	<tr>
+		<td colspan="3" width="100%"><b>Conductor:</b> '.$respuesta["chofer"].'</td>
+	</tr>
+	<tr>
+		<td colspan="3" width="100%"><b>Glosa:</b> '.$respuesta["glosa1"].'</td>
+	</tr>
+</table>
+<br>
+<table style="width:100%; padding: 5px;">
+  <tr>
+    <th style="width:30%">CODIGO</th>
+    <th style="width:50%">DESCRIPCION</th>
+    <th style="width:20%">CANTIDAD</th>
+  </tr>';
+
+$listaProducto = json_decode($respuesta["detalle"], true);
+//var_dump($listaProducto);
+foreach ($listaProducto as $key => $value) {
+ $html .= '<tr>
+		    <td>'.$value["codigo"].'</td>
+		    <td>'.$value["descripcion"].'</td>
+		    <td>'.$value["cantidad"].'</td>
+		  </tr>';
+}
+  
+$html .= '</table>
+</div>
+
+
 
 </body>
-</html>
+
+</html>';
+//ENDHTML;
+	//echo $html;
+	
+// Cargamos el contenido HTML.
+$pdf->loadHtml($html);
+
+// Renderizamos el documento PDF.
+$pdf->render();
+
+// Enviamos el fichero PDF al navegador.
+$filename = 'notaRemision' . $valor . '.pdf';
+
+// Attachement da vista previa en el navegador
+$pdf->stream($filename,array("Attachment"=>0));
+
+}
+
+}
+
+$notaRemision = new imprimirNR();
+$notaRemision -> idNR = $_GET["idNR"];
 
 
 
-<tr>
-			
-			<td colspan="2" style="background-color:white; width:40%">
-				<div style="font-size:8.5px; text-align:lefth; line-height:15px;">
-					<br>
-					<b>Numero NR</b> '.$respuesta["numeroNR"].'
-					<br>
-					<b>Origen:</b> '.$respuesta["origen"].'
-				</div>
-			</td>
-			<td colspan="2" style="background-color:white; width:33%">
-				<div style="font-size:8.5px; text-align:lefth; line-height:15px;">
-					<br>
-					<b>Numero DOC</b> '.$respuesta["numeroDC"].'
-					<br>
-					<b>Destino:</b> '.$respuesta["destino"].'
-				</div>
-			</td>
-			<td style="background-color:white; width:26%">
-				<div style="font-size:8.5px; text-align:lefth; line-height:15px;">
-					<br>
-					<b>Nuemro SAP</b> '.$respuesta["numeroSAP"].'
-					<br>
-					<b></b>
-				</div>
-			</td>	
-		</tr>
+$notaRemision -> traerImpresionidNR();
+
+?>
+
+ body { width: 100%; min-height: 800px } 
+ #container { margin:0 auto !important; width: 750px; overflow: hidden; } 
+ * { font-family: 'Times New Roman' !important; font-size : 14px !important; text-decoration: none !important; margin : 0px;} #container { width: 100%; } 
+ #watermark { position: fixed; width: 382px; height: 470px; margin-left: 120px; margin-top: 190px; opacity: .07; } 
+ @page { margin-left: 3cm !important; margin-top: 3cm !important; margin-right: 2cm !important; margin-bottom: 2cm !important: }
 
 
-<tr style="font-size:8.5px; text-align:lefth; line-height:15px;">
-	<td width="40%"><b>Numero NR</b> '.$respuesta["numeroNR"].'</td>
-	<td width="30%"><b>Numero DOC</b> '.$respuesta["numeroDC"].'</td>
-	<td width="30%"><b>Nuemro SAP</b> '.$respuesta["numeroSAP"].'</td>
-</tr>
+ <div id='watermark'>
+ 	<img src='http://placehold.it/1024x768' height='100%' width='100%' />
+ </div> 
+ <div id='container'> 
+ 	<p>t</p> <p>t</p> <p>t</p> <p>t</p> <p>t</p> <p>t</p> <p>t</p> <p>t</p> <p>t</p> <p>t</p> <p>t</p> <p>t</p> <p>t</p> <p>t</p> <p>t</p> <p>t</p> <p>t</p> <p>t</p> <p>t</p> <p>t</p> <p>t</p> <p>t</p> <p>t</p> <p>t</p> 
+ </div> 

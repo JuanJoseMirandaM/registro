@@ -1,7 +1,8 @@
 /*======================================
 =          EDITAR USUARIO              =
 ======================================*/
-$(".btnEditarProvee").click(function(){
+$(".tablaProveedores").on("click",".btnEditarProvee",function(){
+	//$(".btnEditarProvee").click(function(){
 	var idProvee = $(this).attr("idProvee");
 		
 
@@ -37,7 +38,8 @@ $(".btnEditarProvee").click(function(){
 /*======================================
 =          ACTIVAR PROVEEDOR           =
 ======================================*/
-$(".btnActivarProvee").click(function(){
+$(".tablaProveedores").on("click",".btnActivarProvee",function(){
+	//$(".btnActivarProvee").click(function(){
 	var idProvee = $(this).attr("idProvee"); 
 	var estadoProvee = $(this).attr("estadoProvee");
 
@@ -74,7 +76,8 @@ $(".btnActivarProvee").click(function(){
 /*========================================
 =            ELIMINAR PROVEEDOR          =
 ========================================*/
-$(".btnEliminarProvee").click(function(){
+$(".tablaProveedores").on("click",".btnEliminarProvee",function(){
+	//$(".btnEliminarProvee").click(function(){
 	var idProvee = $(this).attr("idProvee");
 	swal({
 		title: "¿Esta seguro de borrar el proveedor?",

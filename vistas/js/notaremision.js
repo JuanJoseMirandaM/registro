@@ -10,8 +10,19 @@ var table = $(".tablaNotasRemision").DataTable({
     {
         "targets": -1,
         "data": null,
-        "defaultContent": '<div class="btn-group"><button class="btn btn-sm btn-info btnImprimirNR" idNR><i class="fa fa-print"></i></button><button class="btn btn-sm btnEditarNR" idNR><i class="fa fa-pencil"></i></button></div>'
+        "render": function ( data, type, row, meta ) {
+            if (data[10]=='D') {
+                return '<div class="btn-group"><button class="btn btn-sm btn-info btnImprimirNR" idNR="'+data[9]+'"><i class="fa fa-print"></i></button><button class="btn btn-sm btn-warning btnEditarNR" idNR="'+data[9]+'"><i class="fa fa-pencil"></i></button></div>';
+            }else{
+                return '<div class="btn-group"><button class="btn btn-sm btn-info btnImprimirNR"  idNR="'+data[9]+'"><i class="fa fa-print"></i></button><button class="btn btn-sm btn-default btnEditarNR" disabled idNR="'+data[9]+'"><i class="fa fa-pencil"></i></button></div>';
+            }
+          
+        }
+        //"defaultContent": '<div class="btn-group"><button class="btn btn-sm btn-info btnImprimirNR" idNR><i class="fa fa-print"></i></button><button class="btn btn-sm btnEditarNR" idNR><i class="fa fa-pencil"></i></button></div>'
     }
+    ],
+    "order": [
+        [0, 'desc']
     ],
         "language" : {
             "sProcessing":     "Procesando...",
@@ -38,23 +49,14 @@ var table = $(".tablaNotasRemision").DataTable({
             }
         }
 
+
+
 });
 
-/*=============================================
-ACTIVAR LOS BOTONES CON LOS ID CORRESPONDIENTES
-=============================================*/
-
-$('.tablaNotasRemision tbody').on( 'click', 'button', function () {
-    
-    var data = table.row( $(this).parents('tr') ).data();
-    //console.log("respuesta",data);
-    $(this).attr("idNR", data[9]);
-
-} );
 
 /*=============================================
 FUNCIÓN PARA CARGAR BUTTON EDITAR
-=============================================*/
+=============================================
 
 function cargarbtnEditar(){
 
@@ -69,6 +71,7 @@ function cargarbtnEditar(){
 
             $(btnEditarNR[i]).addClass("btn-warning");
 
+
         }else{
             $(btnEditarNR[i]).addClass("btn-default");
             $(btnEditarNR[i]).attr("disabled", "disabled");
@@ -81,7 +84,7 @@ function cargarbtnEditar(){
 
 /*=============================================
 CARGAMOS BUTTON EDITAR CUANDO ENTRAMOS A LA PÁGINA POR PRIMERA VEZ
-=============================================*/
+=============================================
 
 setTimeout(function(){
 
@@ -91,7 +94,7 @@ setTimeout(function(){
 
 /*=============================================
 CARGAMOS BUTTON EDITAR CUANDO INTERACTUAMOS CON EL PAGINADOR
-=============================================*/
+=============================================
 
 $(".dataTables_paginate").click(function(){
 
@@ -100,7 +103,7 @@ $(".dataTables_paginate").click(function(){
 
 /*=============================================
 CARGAMOS BUTTON EDITAR CUANDO INTERACTUAMOS CON EL BUSCADOR
-=============================================*/
+=============================================
 $("input[aria-controls='DataTables_Table_0']").focus(function(){
 
     $(document).keyup(function(event){
@@ -116,7 +119,7 @@ $("input[aria-controls='DataTables_Table_0']").focus(function(){
 
 /*=============================================
 CARGAMOS BUTTON EDITAR CUANDO INTERACTUAMOS CON EL FILTRO DE CANTIDAD
-=============================================*/
+=============================================
 
 $("select[name='DataTables_Table_0_length']").change(function(){
 
@@ -126,7 +129,7 @@ $("select[name='DataTables_Table_0_length']").change(function(){
 
 /*=============================================
 CARGAMOS BUTTON EDITAR CUANDO INTERACTUAMOS CON EL FILTRO DE ORDENAR
-=============================================*/
+=============================================
 
 $(".sorting").click(function(){
 
@@ -222,6 +225,7 @@ $(".btnAgregarProducto").click(function(){
                 )
 
              }
+            activarSelect();
 
             // PONER FORMATO AL PRECIO DE LOS PRODUCTOS
 
@@ -321,6 +325,7 @@ $(".formularioNR").on("change", "select.nuevaPlaca", function(){
 
       })
 })
+
 function activarSelect(){
     $('.select2').select2({
       placeholder: 'Select an option'
@@ -371,9 +376,13 @@ function listarProductos(){
 /*======================================
 =          EDITAR NOTA REMISION          =
 ======================================*/
-$(".tablaNotasRemision tbody").on("click",".btnEditarNR",function(){
+$(".tablaNotasRemision").on("click",".btnEditarNR",function(){
+    //var data = table.row( $(this).parents('tr') ).data();
+    //console.log("respuesta",data);
+    //$(this).attr("idNR", data[9]);  
+
     var idNR = $(this).attr("idNR");  
-    console.log("idNR",idNR);
+    //console.log("idNR",idNR);
     window.location = "index.php?ruta=editar-notaremision&idNR="+idNR
 
 })
@@ -382,6 +391,9 @@ $(".tablaNotasRemision tbody").on("click",".btnEditarNR",function(){
 =         IMPRIMIR NOTA REMISION         =
 ======================================*/
 $(".tablaNotasRemision").on("click",".btnImprimirNR",function(){
+    //var data = table.row( $(this).parents('tr') ).data();
+    //console.log("respuesta",data);
+    //$(this).attr("idNR", data[9]); 
     //var idComprobante = $(this).attr("idComprobante");
     var idNR = $(this).attr("idNR");
     window.open("extensiones/dompdf1.php?idNR="+idNR,"_blank");

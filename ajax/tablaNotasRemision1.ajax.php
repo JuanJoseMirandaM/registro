@@ -22,15 +22,19 @@ class TablaNotasRemision{
 		        $fecha = $notasRemision[$i]["fecha"];
 		  		echo '[
 			      "'.($i+1).'",
+
 			      "'.$notasRemision[$i]["clasificador"].'",
 			      "'.$notasRemision[$i]["automatico"].'",
 			      "'.$fecha.'",
 			      "'.$notasRemision[$i]["tipo1"].'",
+			      
 			      "'.$notasRemision[$i]["numeroNR"].'",
 			      "'.$notasRemision[$i]["numeroDC"].'",
 			      "'.$notasRemision[$i]["numeroSAP"].'",
-			      "'.$notasRemision[$i]["origen"].'-'.$notasRemision[$i]["destino"].'",
-			      "'.$notasRemision[$i]["idNR"].'",
+			      "'.$notasRemision[$i]["origen"].'-'.$notasRemision[$i]["destino"].'",';
+			      /*"'.$notasRemision[$i]["placa"].'",
+			      "'.$notasRemision[$i]["chofer"].'",*/
+			      echo '"'.$notasRemision[$i]["idNR"].'",
 			      "'.$notasRemision[$i]["estado"].'"
 			    ],';
 		  	}	
@@ -40,7 +44,8 @@ class TablaNotasRemision{
 			      "'.$notasRemision[count($notasRemision)-1]["clasificador"].'",
 			      "'.$notasRemision[count($notasRemision)-1]["automatico"].'",
 			      "'.$notasRemision[count($notasRemision)-1]["fecha"].'",
-			      "'.$notasRemision[count($notasRemision)-1]["tipo1"].'",      
+			      "'.$notasRemision[count($notasRemision)-1]["tipo1"].'",
+			      
 			      "'.$notasRemision[count($notasRemision)-1]["numeroNR"].'",
 			      "'.$notasRemision[count($notasRemision)-1]["numeroDC"].'",
 			      "'.$notasRemision[count($notasRemision)-1]["numeroSAP"].'",
