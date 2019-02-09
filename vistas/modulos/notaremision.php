@@ -59,3 +59,7 @@
 <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+<?php 
+  $postear = new ControladorNotaRemision();
+  $postear -> ctrPostearNR();
+?>

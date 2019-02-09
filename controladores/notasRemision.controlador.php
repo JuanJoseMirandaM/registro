@@ -204,5 +204,56 @@ class ControladorNotaRemision{
 		}
 	}
 
+	/*==========================================
+	=         I     POSTEAR NOTA REMISION      =
+	==========================================*/
+	public function ctrPostearNR(){
+		if (isset($_GET["idPNR"])) {
+			$tabla = "notaremision";
+			
+
+			$datos = array(	"idNR" => $_GET["idPNR"],
+							"estado" => "P"
+					);
+			$resultado = $_GET["resultado"];
+
+			if ($resultado="true") {
+				$respuesta = ModeloNotaRemision::mdlPostearNR($tabla, $datos);
+			}
+			
+
+			if ($respuesta == "ok") {
+				echo '<script>
+				swal({
+					type: "success",
+					title: "La nota de remision fue posteada correctamente",
+					showConfirmButton: true,
+					confirmButtonText: "Cerrar",
+					closeOnConfirm: false
+				}).then((result)=>{
+					if(result.value){
+						window.location = "notaremision";
+					}
+				});
+				 
+				</script>';
+			}else{
+				echo '<script>
+					swal({
+						type: "error",
+						title: "La nota de remision no pudo postearse",
+						showConfirmButton: true,
+						confirmButtonText: "Cerrar",
+						closeOnConfirm: false
+					}).then((result)=>{
+						if(result.value){
+							window.location = "notaremision";
+						}
+					});
+				 
+				</script>';
+			}
+		}
+	}
 }
 

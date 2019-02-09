@@ -85,7 +85,13 @@ $html = '
 			}
 
 			.contenedor{
-			  height: 49%;
+			  height: 36%;
+			  background-color: #FFFFFF;
+			  margin: 0% 0%;
+			}
+
+			.firmas{
+			  height: 13%;
 			  background-color: #FFFFFF;
 			  margin: 0% 0%;
 			}
@@ -109,7 +115,8 @@ if ($respuesta["estado"]=="D") {
 }
 
 
-$html .= '<div  class="contenedor">
+$html .= '
+<div  class="contenedor">
 	<table width="100%">
 		<tr>
 			<td style="width:85%"><b>M&D TRANSPORTE NAL. E INTER. SRL</b></td>
@@ -190,14 +197,17 @@ $html .= '<div  class="contenedor">
 	}
 	  
 	$html .= '</table>
+</div>
+
+<div  class="firmas">
 	<table style="width:100%; padding: 25px;">
 		<tr>
 			<td width="35%">
 				<div style="font-size:15px; text-align:center; line-height:15px;">
 					<br>
-					<b>RECIBIDO POR</b>
+					<b>TRANSPORTADO POR</b>
 				</div>
-				<div style="font-size:9px; text-align:left; line-height:8px;">
+				<div style="font-size:10px; text-align:left; line-height:15px;">
 					<br>
 					<b>CI:</b>
 					<br>
@@ -207,9 +217,9 @@ $html .= '<div  class="contenedor">
 			<td width="35%">
 				<div style="font-size:15px; text-align:center; line-height:15px;">
 					<br>
-					<b>ENTREGADO POR</b>
+					<b>DESPACHADO POR</b>
 				</div>
-				<div style="font-size:9px; text-align:left; line-height:8px;">
+				<div style="font-size:10px; text-align:left; line-height:15px;">
 					<br>
 					<b>CI:</b>
 					<br>
@@ -221,7 +231,7 @@ $html .= '<div  class="contenedor">
 					<br>
 					<b>ENTREGADO POR</b>
 				</div>
-				<div style="font-size:9px; text-align:left; line-height:8px;">
+				<div style="font-size:10px; text-align:left; line-height:15px;">
 					<br>
 					<b>CI:</b>
 					<br>
@@ -230,7 +240,6 @@ $html .= '<div  class="contenedor">
 			</td>
 		</tr>
 	</table>
-	
 </div>
 
 <div class="contenedor">
@@ -314,14 +323,18 @@ $html .= '<div  class="contenedor">
 	}
 	  
 	$html .= '</table>
-	<table style="width:100%; padding: 30px;">
+
+</div>
+
+<div  class="firmas">
+	<table style="width:100%; padding: 25px;">
 		<tr>
 			<td width="35%">
 				<div style="font-size:15px; text-align:center; line-height:15px;">
 					<br>
-					<b>RECIBIDO POR</b>
+					<b>TRANSPORTADO POR</b>
 				</div>
-				<div style="font-size:9px; text-align:left; line-height:8px;">
+				<div style="font-size:10px; text-align:left; line-height:15px;">
 					<br>
 					<b>CI:</b>
 					<br>
@@ -331,9 +344,9 @@ $html .= '<div  class="contenedor">
 			<td width="35%">
 				<div style="font-size:15px; text-align:center; line-height:15px;">
 					<br>
-					<b>ENTREGADO POR</b>
+					<b>DESPACHADO POR</b>
 				</div>
-				<div style="font-size:9px; text-align:left; line-height:8px;">
+				<div style="font-size:10px; text-align:left; line-height:15px;">
 					<br>
 					<b>CI:</b>
 					<br>
@@ -345,7 +358,7 @@ $html .= '<div  class="contenedor">
 					<br>
 					<b>ENTREGADO POR</b>
 				</div>
-				<div style="font-size:9px; text-align:left; line-height:8px;">
+				<div style="font-size:10px; text-align:left; line-height:15px;">
 					<br>
 					<b>CI:</b>
 					<br>
@@ -355,7 +368,6 @@ $html .= '<div  class="contenedor">
 		</tr>
 	</table>
 </div>
-
 
 
 </body>

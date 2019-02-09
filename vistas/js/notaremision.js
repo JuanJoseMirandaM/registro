@@ -12,9 +12,9 @@ var table = $(".tablaNotasRemision").DataTable({
         "data": null,
         "render": function ( data, type, row, meta ) {
             if (data[10]=='D') {
-                return '<div class="btn-group"><button class="btn btn-sm btn-info btnImprimirNR" idNR="'+data[9]+'"><i class="fa fa-print"></i></button><button class="btn btn-sm btn-warning btnEditarNR" idNR="'+data[9]+'"><i class="fa fa-pencil"></i></button></div>';
+                return '<div class="btn-group"><button class="btn btn-sm btn-success btnPostearNR" idNR="'+data[9]+'"><i class="fa fa-check"></i></button><button class="btn btn-sm btn-info btnImprimirNR" idNR="'+data[9]+'"><i class="fa fa-print"></i></button><button class="btn btn-sm btn-warning btnEditarNR" idNR="'+data[9]+'"><i class="fa fa-pencil"></i></button></div>';
             }else{
-                return '<div class="btn-group"><button class="btn btn-sm btn-info btnImprimirNR"  idNR="'+data[9]+'"><i class="fa fa-print"></i></button><button class="btn btn-sm btn-default btnEditarNR" disabled idNR="'+data[9]+'"><i class="fa fa-pencil"></i></button></div>';
+                return '<div class="btn-group"><button class="btn btn-sm btn-default btnPostearNR" idNR="'+data[9]+'"><i class="fa fa-check"></i></button><button class="btn btn-sm btn-info btnImprimirNR"  idNR="'+data[9]+'"><i class="fa fa-print"></i></button><button class="btn btn-sm btn-default btnEditarNR" disabled idNR="'+data[9]+'"><i class="fa fa-pencil"></i></button></div>';
             }
           
         }
@@ -397,4 +397,57 @@ $(".tablaNotasRemision").on("click",".btnImprimirNR",function(){
     //var idComprobante = $(this).attr("idComprobante");
     var idNR = $(this).attr("idNR");
     window.open("extensiones/dompdf1.php?idNR="+idNR,"_blank");
+})
+$(".formularioNR").on("click",".btnImprimirNR",function(){
+    //var data = table.row( $(this).parents('tr') ).data();
+    //console.log("respuesta",data);
+    //$(this).attr("idNR", data[9]); 
+    //var idComprobante = $(this).attr("idComprobante");
+    var idNR = $(this).attr("idNR");
+    window.open("extensiones/dompdf1.php?idNR="+idNR,"_blank");
+})
+
+
+/*======================================
+=        POSTEAR NOTA REMISION         =
+======================================*/
+
+$(".formularioNR").on("click",".btnPostearNR",function(){
+    var idNR = $(this).attr("idNR");
+    swal({
+        title: "¿Esta seguro de POSTEAR la nota de remision?",
+        text: "Si no lo esta puedes cancelar la accion!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        cancelButtonText: "Cancelar",
+        confirmButtonText: "Si, postear!"  
+            
+    }).then((result) => {
+        if(result.value){
+            window.location = "index.php?ruta=notaremision&idPNR="+idNR+"&resultado="+result.value
+        }
+    })
+        
+})
+
+$(".tablaNotasRemision").on("click",".btnPostearNR",function(){
+    var idNR = $(this).attr("idNR");
+    swal({
+        title: "¿Esta seguro de POSTEAR la nota de remision?",
+        text: "Si no lo esta puedes cancelar la accion!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        cancelButtonText: "Cancelar",
+        confirmButtonText: "Si, postear!"  
+            
+    }).then((result) => {
+        if(result.value){
+            window.location = "index.php?ruta=notaremision&idPNR="+idNR+"&resultado="+result.value
+        }
+    })
+        
 })

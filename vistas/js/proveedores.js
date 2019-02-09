@@ -1,5 +1,5 @@
 /*======================================
-=          EDITAR USUARIO              =
+=          EDITAR PROVEEDOR            =
 ======================================*/
 $(".tablaProveedores").on("click",".btnEditarProvee",function(){
 	//$(".btnEditarProvee").click(function(){

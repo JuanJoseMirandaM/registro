@@ -122,4 +122,26 @@ class ModeloNotaRemision{
 		$stmt->close();
 		$stmt = null;
 	}
+
+	/*==========================================
+	=          POSTEAR NOTAS REMISION          =
+	==========================================*/
+	static public function mdlPostearNR($tabla, $datos){
+		
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET estado = :estado WHERE idNR = :idNR");
+
+			$stmt -> bindParam(":idNR", $datos["idNR"], PDO::PARAM_STR);
+			$stmt -> bindParam(":estado", $datos["estado"], PDO::PARAM_STR);
+			
+
+		//var_dump($stmt);	
+		if ($stmt->execute()) {
+			return "ok";
+		}else{
+			return "error";
+		}
+
+		$stmt->close();
+		$stmt = null;
+	}
 }

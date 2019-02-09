@@ -243,7 +243,7 @@
                 <label class="col-lg-1 col-sm-2 col-xs-4 col-form-label">Glosa</label>
                 <div class="col-lg-6 col-sm-10 col-xs-8">
                   <textarea class="form-control" rows="3" id="nuevaGLosa" name="nuevaGlosa" ><?php echo $NR["glosa1"]; ?></textarea>
-                </div>
+
               </div>
                
             </div>
@@ -351,14 +351,14 @@
            ?>    
             
             </div>
-
-            <input type="hidden" id="listaProductos" name="listaProductos">
+          
+            <input type="hidden" id="listaProductos" name="listaProductos" value='<?php echo $NR["detalle"]; ?>' >
               
             <div class="box-footer">
-              <button type="button" class="btn btn-warning pull-left"><i class="fa fa-print"></i> Imprimir</button>
-              <button type="button" class="btn btn-success pull-left"><i class="fa fa-check"></i> Postear</button>
+              <button type="button" class="btn btn-warning pull-left btnImprimirNR" idNR='<?php echo $NR["idNR"]; ?>'><i class="fa fa-print"></i> Imprimir</button>
+              <button type="button" class="btn btn-success pull-left btnPostearNR" idNR='<?php echo $NR["idNR"]; ?>'><i class="fa fa-check"></i> Postear</button>
 
-              <button type="submit" class="btn btn-primary pull-right  GuardarLinNR"><i class="fa fa-save"></i> Guardar</button>
+              <button type="submit" class="btn btn-primary pull-right GuardarLinNR"><i class="fa fa-save"></i> Guardar</button>
 
             </div>
           </div>
@@ -375,3 +375,5 @@
 <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+
