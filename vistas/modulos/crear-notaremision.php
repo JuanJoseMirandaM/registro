@@ -106,11 +106,13 @@
                       foreach ($ventas as $key => $value) {    
 
                       }
-
+                      $numero = $value["numero"] + 1;
                       $codigo = $value["automatico"] + 1;
                       $idNR = $value["idNR"] + 1;
 
-                      echo '<input type="number" class="form-control nuevoNumero" id="nuevoNumero" name="nuevoNumero" value="'.$codigo.'" required readonly>';
+                      echo '<input type="number" class="form-control nuevoNumero" id="nuevoNumero" name="nuevoNumero" value="'.$numero.'" required readonly>';
+
+                      echo '<input type="hidden" class="form-control nuevoCodigo" id="nuevoCodigo" name="nuevoCodigo" value="'.$codigo.'">';
                   
                       echo '<input type="hidden" class="form-control nuevoIdNR" id="nuevoIdNR" name="nuevoIdNR" value="'.$idNR.'">';
                     }

@@ -15,10 +15,12 @@ class ControladorProveedores{
 
 				$datos = array("codigo" => $_POST["nuevoCodigo"],
 							   "nombre" => $_POST["nuevoNombre"],
+							   "ci" => $_POST["nuevoCiD"],
 							   "fono" => $_POST["nuevoFono"],
 							   "placa" => $_POST["nuevaPlaca"],
 							   "marca" => $_POST["nuevaMarca"],
 							   "chofer" => $_POST["nuevoChofer"],
+							   "ci_chofer" => $_POST["nuevoCiC"],
 							   "celu" => $_POST["nuevoCelu"]);
 				//var_dump($datos);
 
@@ -87,10 +89,12 @@ class ControladorProveedores{
 				$datos = array("idprovee" => $_POST["idActual"],
 							   "cod_provee" => $_POST["editarCode"],
 							   "nombre_com" => $_POST["editarNombre"],
+							   "ci" => $_POST["editarCiD"],
 							   "celular" => $_POST["editarFono"],
 							   "placa_camion" => $_POST["editarPlaca"],
 							   "marca" => $_POST["editarMarca"],
 							   "chofer" => $_POST["editarChofer"],
+							   "ci_chofer" => $_POST["editarCiC"],
 							   "cel_chofer" => $_POST["editarFonoChofer"]
 							   );
 

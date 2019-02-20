@@ -23,7 +23,7 @@ class TablaNotasRemision{
 		  		echo '[
 			      "'.($i+1).'",
 			      "'.$notasRemision[$i]["clasificador"].'",
-			      "'.$notasRemision[$i]["automatico"].'",
+			      "'.$notasRemision[$i]["numero"].'",
 			      "'.$fecha.'",
 			      "'.$notasRemision[$i]["tipo1"].'",
 			      "'.$notasRemision[$i]["numeroNR"].'",
@@ -38,7 +38,7 @@ class TablaNotasRemision{
 		  echo '[
 			      "'.count($notasRemision).'",
 			      "'.$notasRemision[count($notasRemision)-1]["clasificador"].'",
-			      "'.$notasRemision[count($notasRemision)-1]["automatico"].'",
+			      "'.$notasRemision[count($notasRemision)-1]["numero"].'",
 			      "'.$notasRemision[count($notasRemision)-1]["fecha"].'",
 			      "'.$notasRemision[count($notasRemision)-1]["tipo1"].'",      
 			      "'.$notasRemision[count($notasRemision)-1]["numeroNR"].'",

@@ -35,14 +35,16 @@ class ModeloProveedores{
  	* REGISTRO DE PROVEEDORES
  	*/
 	static public function mdlIngresarProveedor($tabla, $datos){
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(cod_provee, nombre_com, celular, placa_camion, marca, chofer, cel_chofer, habilitado) VALUES (:cod_provee, :nombre_com, :celular, :placa_camion, :marca, :chofer, :cel_chofer, 1)");
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(cod_provee, nombre_com, ci, celular, placa_camion, marca, chofer, ci_chofer, cel_chofer, habilitado) VALUES (:cod_provee, :nombre_com, :ci, :celular, :placa_camion, :marca, :chofer, :ci_chofer, :cel_chofer, 0)");
 
 		$stmt -> bindParam(":cod_provee", $datos["codigo"], PDO::PARAM_STR);
 		$stmt -> bindParam(":nombre_com", $datos["nombre"], PDO::PARAM_STR);
+		$stmt -> bindParam(":ci", $datos["ci"], PDO::PARAM_STR);
 		$stmt -> bindParam(":celular", $datos["fono"], PDO::PARAM_STR);
 		$stmt -> bindParam(":placa_camion", $datos["placa"], PDO::PARAM_STR);
 		$stmt -> bindParam(":marca", $datos["marca"], PDO::PARAM_STR);
 		$stmt -> bindParam(":chofer", $datos["chofer"], PDO::PARAM_STR);
+		$stmt -> bindParam(":ci_chofer", $datos["ci_chofer"], PDO::PARAM_STR);
 		$stmt -> bindParam(":cel_chofer", $datos["celu"], PDO::PARAM_STR);
 
 		if ($stmt->execute()) {
@@ -58,15 +60,17 @@ class ModeloProveedores{
  	* EditarDE USUARIOS
  	*/
 	static public function mdlEditarProveedor($tabla, $datos){
-		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET cod_provee = :cod_provee, nombre_com = :nombre_com, celular = :celular, placa_camion = :placa_camion, marca = :marca, chofer = :chofer, cel_chofer = :cel_chofer WHERE idprovee = :idprovee" );
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET cod_provee = :cod_provee, nombre_com = :nombre_com, ci = :ci, celular = :celular, placa_camion = :placa_camion, marca = :marca, chofer = :chofer, ci_chofer = :ci_chofer, cel_chofer = :cel_chofer WHERE idprovee = :idprovee" );
 
 		$stmt -> bindParam(":idprovee", $datos["idprovee"], PDO::PARAM_STR);
 		$stmt -> bindParam(":cod_provee", $datos["cod_provee"], PDO::PARAM_STR);
 		$stmt -> bindParam(":nombre_com", $datos["nombre_com"], PDO::PARAM_STR);
+		$stmt -> bindParam(":ci", $datos["ci"], PDO::PARAM_STR);
 		$stmt -> bindParam(":celular", $datos["celular"], PDO::PARAM_STR);
 		$stmt -> bindParam(":placa_camion", $datos["placa_camion"], PDO::PARAM_STR);
 		$stmt -> bindParam(":marca", $datos["marca"], PDO::PARAM_STR);
 		$stmt -> bindParam(":chofer", $datos["chofer"], PDO::PARAM_STR);
+		$stmt -> bindParam(":ci_chofer", $datos["ci_chofer"], PDO::PARAM_STR);
 		$stmt -> bindParam(":cel_chofer", $datos["cel_chofer"], PDO::PARAM_STR);
 		
 

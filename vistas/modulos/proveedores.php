@@ -133,19 +133,27 @@
                   <input type="text" class="form-control input-lg" name="nuevoNombre" placeholder="Nombre del dueño" required>
                 </div>
               </div>
+
+              <!-- ENTRADA CID-->
+              <div class=" form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+                  <input type="text" class="form-control input-lg" name="nuevoCiD" placeholder="CI del dueño">
+                </div>
+              </div>
                                         
               <!-- ENTRADA FONO-->
               <div class=" form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                  <input type="text" class="form-control input-lg" name="nuevoFono" placeholder="Telefono">
+                  <input type="text" class="form-control input-lg" name="nuevoFono" placeholder="Telefono del dueño">
                 </div>
               </div>
 
               <!-- ENTRADA PLACA-->
               <div class=" form-group">
                 <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                  <span class="input-group-addon"><i class="fa fa-truck"></i></span>
                   <input type="text" class="form-control input-lg" name="nuevaPlaca" placeholder="Placa camion">
                 </div>
               </div>
@@ -153,7 +161,7 @@
               <!-- ENTRADA MARCA-->
               <div class=" form-group">
                 <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                  <span class="input-group-addon"><i class="fa fa-truck"></i></span>
                   <input type="text" class="form-control input-lg" name="nuevaMarca" placeholder="Marca camion">
                 </div>
               </div>
@@ -166,11 +174,19 @@
                 </div>
               </div>
 
+              <!-- ENTRADA CID-->
+              <div class=" form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+                  <input type="text" class="form-control input-lg" name="nuevoCiC" placeholder="CI del chofer">
+                </div>
+              </div>
+
               <!-- ENTRADA CELULAR-->
               <div class=" form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                  <input type="text" class="form-control input-lg" name="nuevoCelu" placeholder="Telefono chofer">
+                  <input type="text" class="form-control input-lg" name="nuevoCelu" placeholder="Telefono del chofer">
                 </div>
               </div>
 
@@ -240,6 +256,14 @@
                   <input type="hidden" id="nombreActual" name="nombreActual">
                 </div>
               </div>
+
+              <!-- ENTRADA CID-->
+              <div class=" form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+                  <input type="text" class="form-control input-lg" id="editarCiD" name="editarCiD" value="" required>
+                </div>
+              </div>
               
               <!-- ENTRADA FONO-->
               <div class=" form-group">
@@ -262,7 +286,7 @@
               <!-- ENTRADA MARCA-->
               <div class=" form-group">
                 <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                  <span class="input-group-addon"><i class="fa fa-truck"></i></span>
                   <input type="text" class="form-control input-lg" id="editarMarca" name="editarMarca" value="">
                   <input type="hidden" id="marcaActual" name="marcaActual">
                 </div>
@@ -271,12 +295,20 @@
               <!-- ENTRADA CHOFER-->
               <div class=" form-group">
                 <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                  <span class="input-group-addon"><i class="fa fa-truck"></i></span>
                   <input type="text" class="form-control input-lg" id="editarChofer" name="editarChofer" value="">
                   <input type="hidden" id="choferActual" name="choferActual">
                 </div>
               </div>
 
+              <!-- ENTRADA CIC-->
+              <div class=" form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+                  <input type="text" class="form-control input-lg" id="editarCiC" name="editarCiC" value="" required>
+                </div>
+              </div>
+              
               <!-- ENTRADA FONO CHOFER-->
               <div class=" form-group">
                 <div class="input-group">

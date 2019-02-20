@@ -139,8 +139,10 @@
     //<!-- Site wrapper -->
     echo '<div class="wrapper">';
     //echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>';
-  	include "modulos/cabezote.php";
   	
+
+    include "modulos/cabezote.php";
+  	include "modulos/tiempo.php";
     include "modulos/menu.php";
 
     if(isset($_GET["ruta"])){
@@ -155,7 +157,7 @@
 
          $_GET["ruta"] == "reportes"||
          $_GET["ruta"] == "salir"){
-
+        
         include "modulos/".$_GET["ruta"].".php";
 
       }else{

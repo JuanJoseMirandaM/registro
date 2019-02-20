@@ -41,7 +41,7 @@ class ModeloNotaRemision{
 	==========================================*/
 	static public function mdlIngresarNotaRemision($tabla, $datos){
 		
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (idNR, automatico, clasificador, cotizacion, estado, fecha, usuario, glosa1,  tipo1, login, moneda, tipo2, sistema, numeroNR, numeroDC, numeroSAP, fcha_registro, origen, destino, placa, cod_Camion, chofer, detalle) VALUES (:idNR, :automatico, :clasificador, :cotizacion, :estado, :fecha, :usuario, :glosa1, :tipo1, :login, :moneda, :tipo2, :sistema, :numeroNR, :numeroDC, :numeroSAP, :fcha_registro, :origen, :destino, :placa, :cod_Camion, :chofer, :detalle)");
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (idNR, automatico, clasificador, cotizacion, estado, fecha, usuario, glosa1,  tipo1, login, moneda, numero, tipo2, sistema, numeroNR, numeroDC, numeroSAP, fcha_registro, origen, destino, placa, cod_Camion, chofer, detalle) VALUES (:idNR, :automatico, :clasificador, :cotizacion, :estado, :fecha, :usuario, :glosa1, :tipo1, :login, :moneda, :numero, :tipo2, :sistema, :numeroNR, :numeroDC, :numeroSAP, :fcha_registro, :origen, :destino, :placa, :cod_Camion, :chofer, :detalle)");
 
 			$stmt -> bindParam(":idNR", $datos["idNR"], PDO::PARAM_STR);
 			$stmt -> bindParam(":automatico", $datos["automatico"], PDO::PARAM_STR);
@@ -54,6 +54,7 @@ class ModeloNotaRemision{
 			$stmt -> bindParam(":tipo1", $datos["tipo1"], PDO::PARAM_STR);
 			$stmt -> bindParam(":login", $datos["login"], PDO::PARAM_STR);
 			$stmt -> bindParam(":moneda", $datos["moneda"], PDO::PARAM_STR);
+			$stmt -> bindParam(":numero", $datos["numero"], PDO::PARAM_STR);
 			$stmt -> bindParam(":tipo2", $datos["tipo2"], PDO::PARAM_STR);
 			$stmt -> bindParam(":sistema", $datos["sistema"], PDO::PARAM_STR);
 			$stmt -> bindParam(":numeroNR", $datos["numeroNR"], PDO::PARAM_STR);

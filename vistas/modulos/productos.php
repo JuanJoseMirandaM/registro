@@ -116,7 +116,7 @@
               <!-- ENTRADA Codigo-->
               <div class=" form-group">
                 <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                  <span class="input-group-addon"><i class="fa fa-key"></i></span>
                   <input type="text" class="form-control input-lg" name="nuevoCodigo" placeholder="Ingresar Codigo" id="nuevoCodigo" required>
                 </div>
               </div>
@@ -124,7 +124,7 @@
               <!-- ENTRADA DESCRIPCION-->
               <div class=" form-group">
                 <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                  <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
                   <input type="text" class="form-control input-lg" name="nuevaDescripcion" placeholder="Ingresar Descripcion" required>
                 </div>
               </div>
@@ -132,7 +132,7 @@
               <!-- ENTRADA PESO-->
               <div class=" form-group">
                 <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-scale"></i></span>
                   <input type="text" class="form-control input-lg" name="nuevoPeso" placeholder="Ingresar Peso" required>
                 </div>
               </div>
@@ -140,15 +140,15 @@
               <!-- botellas por caja-->
               <div class=" form-group">
                 <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                  <input type="text" class="form-control input-lg" name="nuevoBXC" placeholder="Ingresar numero de botellas por caja">
+                  <span class="input-group-addon"><i class="fa fa-inbox"></i></span>
+                  <input type="number" class="form-control input-lg" name="nuevoBXC" placeholder="Ingresar numero de botellas por caja">
                 </div>
               </div>
 
               <!-- Litros por botella-->
               <div class=" form-group">
                 <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-scale"></i></span>
                   <input type="text" class="form-control input-lg" name="nuevoLXB" placeholder="Ingresar litros por botella">
                 </div>
               </div>
@@ -204,7 +204,7 @@
               <!-- ENTRADA CODIGO-->
               <div class=" form-group">
                 <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                  <span class="input-group-addon"><i class="fa fa-key"></i></span>
                   <input type="text" class="form-control input-lg" id="editarCodigo" name="editarCodigo"value="" required>
                   <input type="hidden" id="codigoActual" name="codigoActual">
                 </div>
@@ -213,7 +213,7 @@
               <!-- ENTRADA DESCRIPCION-->
               <div class=" form-group">
                 <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                  <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
                   <input type="text" class="form-control input-lg" id="editarDescripcion" name="editarDescripcion" value="" required>
                   <input type="hidden" id="descripcionActual" name="descripcionActual">
                 </div>
@@ -222,7 +222,7 @@
               <!-- ENTRADA PESO-->
               <div class=" form-group">
                 <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-scale"></i></span>
                   <input type="text" class="form-control input-lg" id="editarPeso" name="editarPeso" value="" required>
                   <input type="hidden" id="pesoActual" name="pesoActual">
                 </div>
@@ -231,8 +231,8 @@
               <!-- ENTRADA botellas x caja-->
               <div class=" form-group">
                 <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                  <input type="text" class="form-control input-lg" id="editarBXC" name="editarBXC" value="" required>
+                  <span class="input-group-addon"><i class="fa fa-inbox"></i></span>
+                  <input type="number" class="form-control input-lg" id="editarBXC" name="editarBXC" value="" required>
                   <input type="hidden" id="BXCActual" name="BXCActual">
                 </div>
               </div>
@@ -240,7 +240,7 @@
               <!-- ENTRADA litros por botella-->
               <div class=" form-group">
                 <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-scale"></i></span>
                   <input type="text" class="form-control input-lg" id="editarLXB" name="editarLXB" value="" required>
                   <input type="hidden" id="LXBActual" name="LXBActual">
                 </div>

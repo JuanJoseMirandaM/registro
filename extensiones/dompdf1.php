@@ -110,7 +110,7 @@ $html = '
 
 if ($respuesta["estado"]=="D") {
 	$html .= '<div id="watermark">
-		 	<img src="img/diferido.png" height="100%" width="100%" />
+		 	<img src="img/diferido2.png" height="100%" width="100%" />
 		 </div> ';
 }
 
@@ -119,12 +119,13 @@ $html .= '
 <div  class="contenedor">
 	<table width="100%">
 		<tr>
-			<td style="width:85%"><b>M&D TRANSPORTE NAL. E INTER. SRL</b></td>
+
+			<td style="width:85%"><b>MERCEDES A. PEÑAFIEL DE CAREAGA</b></td>
 			<td style="width:15%"><b>Lugar:</b> LPZ</td>
 		</tr>
 		<tr>
 			<td style="width:85%"><b>Av. Garcia Lanza #60 Zona Achumani</b></td>
-			<td style="width:15%"><b>Numero:</b></td>
+			<td style="width:15%"><b>Numero:</b>'.$respuesta["numero"].'</td>
 		</tr>
 		<tr>
 			<td style="width:85%"><b>NIT: 192822026</b></td>
@@ -145,7 +146,7 @@ $html .= '
 			<td colspan="3" style=" color:#000080; background-color:white; width:100%">
 				<div style="font-size:20px; text-align:center; line-height:15px;">
 					<br>
-					<b>ALBARAN</b>
+					<b>ALBARAN TRANSPORT</b>
 				</div>
 			</td>
 		</tr>
@@ -209,9 +210,10 @@ $html .= '
 				</div>
 				<div style="font-size:10px; text-align:left; line-height:15px;">
 					<br>
-					<b>CI:</b>
+					<b>Nombre: </b>'.$respuesta["chofer"].'
 					<br>
-					<b>Nombre:</b>
+					<b>CI:</b>
+					
 				</div>
 			</td>
 			<td width="35%">
@@ -221,9 +223,10 @@ $html .= '
 				</div>
 				<div style="font-size:10px; text-align:left; line-height:15px;">
 					<br>
-					<b>CI:</b>
-					<br>
 					<b>Nombre:</b>
+					<br>
+					<b>CI:</b>
+					
 				</div>
 			</td>
 			<td width="30%">
@@ -233,9 +236,10 @@ $html .= '
 				</div>
 				<div style="font-size:10px; text-align:left; line-height:15px;">
 					<br>
-					<b>CI:</b>
-					<br>
 					<b>Nombre:</b>
+					<br>
+					<b>CI:</b>
+					
 				</div>
 			</td>
 		</tr>
@@ -246,12 +250,12 @@ $html .= '
 	
 	<table width="100%">
 		<tr>
-			<td style="width:85%"><b>M&D TRANSPORTE NAL. E INTER. SRL</b></td>
+			<td style="width:85%"><b>MERCEDES A. PEÑAFIEL DE CAREAGA</b></td>
 			<td style="width:15%"><b>Lugar:</b> LPZ</td>
 		</tr>
 		<tr>
 			<td style="width:85%"><b>Av. Garcia Lanza #60 Zona Achumani</b></td>
-			<td style="width:15%"><b>Numero:</b></td>
+			<td style="width:15%"><b>Numero:</b>'.$respuesta["numero"].'</td>
 		</tr>
 		<tr>
 			<td style="width:85%"><b>NIT: 192822026</b></td>
@@ -272,7 +276,7 @@ $html .= '
 			<td colspan="3" style=" color:#000080; background-color:white; width:100%">
 				<div style="font-size:20px; text-align:center; line-height:15px;">
 					<br>
-					<b>ALBARAN</b>
+					<b>ALBARAN TRANSPORT</b>
 				</div>
 			</td>
 		</tr>
@@ -336,9 +340,9 @@ $html .= '
 				</div>
 				<div style="font-size:10px; text-align:left; line-height:15px;">
 					<br>
-					<b>CI:</b>
+					<b>Nombre: </b>'.$respuesta["chofer"].'
 					<br>
-					<b>Nombre:</b>
+					<b>CI: </b>
 				</div>
 			</td>
 			<td width="35%">
@@ -348,9 +352,9 @@ $html .= '
 				</div>
 				<div style="font-size:10px; text-align:left; line-height:15px;">
 					<br>
-					<b>CI:</b>
-					<br>
 					<b>Nombre:</b>
+					<br>
+					<b>CI:</b>
 				</div>
 			</td>
 			<td width="30%">
@@ -360,9 +364,10 @@ $html .= '
 				</div>
 				<div style="font-size:10px; text-align:left; line-height:15px;">
 					<br>
-					<b>CI:</b>
-					<br>
 					<b>Nombre:</b>
+					<br>
+					<b>CI:</b>
+					
 				</div>
 			</td>
 		</tr>

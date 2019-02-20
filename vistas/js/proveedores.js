@@ -21,10 +21,12 @@ $(".tablaProveedores").on("click",".btnEditarProvee",function(){
 			console.log("respuesta Provee", respuesta);
 			$("#editarCode").val(respuesta["cod_provee"]);
 			$("#editarNombre").val(respuesta["nombre_com"]);
+			$("#editarCiD").val(respuesta["ci"]);
 			$("#editarFono").val(respuesta["celular"]);
 			$("#editarPlaca").val(respuesta["placa_camion"]);
 			$("#editarMarca").val(respuesta["marca"]);
 			$("#editarChofer").val(respuesta["chofer"]);
+			$("#editarCiC").val(respuesta["ci_chofer"]);
 			$("#editarFonoChofer").val(respuesta["cel_chofer"]);
 
 			$("#idActual").val(respuesta["idprovee"]);

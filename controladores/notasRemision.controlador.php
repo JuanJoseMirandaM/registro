@@ -35,7 +35,7 @@ class ControladorNotaRemision{
 				//$fecha = $date->format('Y/m/d');
 				
 			   	$datos = array(	"idNR" => $_POST["nuevoIdNR"],
-								"automatico" => $_POST["nuevoNumero"],
+								"automatico" => $_POST["nuevoCodigo"],
 								"clasificador" => $_POST["nuevaEmpresa"],
 								"cotizacion" => $_POST["nuevoTC"],
 								"estado" => "D",
@@ -45,6 +45,7 @@ class ControladorNotaRemision{
 								"tipo1" => $_POST["nuevaFlete"],
 								"login" => $_POST["idUsuario"],
 								"moneda" => $_POST["nuevaMoneda"],
+								"numero" => $_POST["nuevoNumero"],
 								"tipo2" => $_POST["nuevoTipo"],
 								"sistema" => "Registra",
 								"numeroNR" => $_POST["nuevoNR"],

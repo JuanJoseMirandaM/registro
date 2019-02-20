@@ -33,23 +33,28 @@ class ControladorUsuarios{
 						$_SESSION["perfil"] = $respuesta["perfil"];
 
 						/*=============================================
-						REGISTRAR FECHA PARA SABER EL ÚLTIMO LOGIN
+						REGISTRAR FECHA PARA SABER EL ÚLTIMO LOGIN Y GUARDAMOS HORA AL SESSION
 						=============================================*/
 
 						date_default_timezone_set('America/La_Paz');
 						$fecha = date('Y-m-d');
 						$hora = date('H:i:s');
 						$fechaActual = $fecha.' '.$hora;
-						
+
 						$item1 = "ultimo_login";
 						$valor1 = $fechaActual;
 
 						$item2 = "idUsuario";
 						$valor2 = $respuesta["idUsuario"];
 
+
+
 						$ultimoLogin = ModeloUsuarios::MdlActualizarUsuario($tabla, $item1, $valor1, $item2, $valor2);
 
 						if ($ultimoLogin == "ok") {
+							$ahora = date("Y-n-j H:i:s"); 
+    						$_SESSION["ultimoAcceso"] = $ahora;
+
 							if($_SESSION["perfil"] == "Administrador"){
 
 								echo '<script>
@@ -62,7 +67,7 @@ class ControladorUsuarios{
 
 								echo '<script>
 
-									window.location = "notasremision";
+									window.location = "notaremision";
 
 								</script>';
 
