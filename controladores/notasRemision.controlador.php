@@ -220,6 +220,12 @@ class ControladorNotaRemision{
 
 			if ($resultado="true") {
 				$respuesta = ModeloNotaRemision::mdlPostearNR($tabla, $datos);
+
+	            $listaProducto = json_decode($NR["detalle"], true);
+              	//value[cantidad], value[codigo], value[descripcion]
+              	foreach ($listaProducto as $key => $value) {
+              		
+              	}
 			}
 			
 

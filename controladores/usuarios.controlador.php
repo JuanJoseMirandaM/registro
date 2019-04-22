@@ -19,9 +19,12 @@ class ControladorUsuarios{
 				$item = "usuario";
 				$valor = $_POST["ingUsuario"];
 				
+
 				$respuesta = ModeloUsuarios::MdlMostrarUsuarios($tabla, $item, $valor);
 
+
 				if($respuesta["usuario"] == $_POST["ingUsuario"] && $respuesta["password"] == $encriptar){
+
 
 					if($respuesta["estado"] == 1){
 
@@ -51,10 +54,13 @@ class ControladorUsuarios{
 
 						$ultimoLogin = ModeloUsuarios::MdlActualizarUsuario($tabla, $item1, $valor1, $item2, $valor2);
 
+						
+
 						if ($ultimoLogin == "ok") {
 							$ahora = date("Y-n-j H:i:s"); 
     						$_SESSION["ultimoAcceso"] = $ahora;
 
+    						
 							if($_SESSION["perfil"] == "Administrador"){
 
 								echo '<script>
@@ -72,7 +78,7 @@ class ControladorUsuarios{
 								</script>';
 
 							}else{
-
+								
 								echo '<script>
 
 									window.location = "inicio";

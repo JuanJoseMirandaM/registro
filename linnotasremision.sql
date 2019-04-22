@@ -1,0 +1,30 @@
+create table linNR{
+	idNR int(11) NOT NULL,
+	sistema varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+	planta varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+	clasificador varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+	tipo varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
+	numero int(11) DEFAULT NULL,
+
+	cod_producto int(11) NOT NULL,
+	idLNR int NOT NULL AUTO_INCREMENT,
+	partida varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+	tipo_subproducto varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+	cod_subproducto varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+	glosa varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+	cxc_Bs decimal(10,2) DEFAULT NULL,
+	cxp_Bs decimal(10,2) DEFAULT NULL,
+	fecha datetime DEFAULT NULL,
+	estado varchar(1) COLLATE utf8_spanish_ci DEFAULT NULL,
+	cantidad int(11) NOT NULL,
+
+	peso decimal(10,2) DEFAULT NULL,
+	kqq decimal(10,2) DEFAULT NULL,
+	precio decimal(10,2) DEFAULT NULL,
+	costo decimal(10,2) DEFAULT NULL,
+	fcha_nro varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
+	Periodo varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
+	dctoCxc decimal(10,2) DEFAULT NULL,
+	dctoCxp decimal(10,2) DEFAULT NULL,
+	primary key(idLNR)
+}

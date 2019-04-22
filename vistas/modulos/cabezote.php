@@ -49,7 +49,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Perfil</a>
+                  <?php echo'<a href="#" class="btn btn-default btn-flat" idUsuario="'.$_SESSION["id"].'"</a>' ?>
                 </div>
                 <div class="pull-right">
                   <a href="salir" class="btn btn-default btn-flat">Salir</a>

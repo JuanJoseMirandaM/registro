@@ -71,13 +71,6 @@
                   <label>Fecha</label>
 
                   <div class="input-group date col-lg-12 col-sm-12 col-xs-12">
-                        
-                    <!--<div class="input-group-addon">
-                      <i class="fa fa-calendar"></i>
-                    </div>
-                    <input type="text" class="form-control pull-rigft nuevaFecha" id="datepicker" name="nuevaFecha">
-                    <input data-provide="datepicker" class="form-control pull-rigft nuevaFecha" id="nuevaFecha" name="nuevaFecha"> 
-                    <input type="text" class="form-control pull-rigft nuevaFecha">-->
                     <input type="text" class="datepicker form-control pull-rigft nuevaFecha" id="nuevaFecha" name="nuevaFecha">
                   </div>
                       

@@ -12,15 +12,25 @@ var table = $(".tablaNotasRemision").DataTable({
         "data": null,
         "render": function ( data, type, row, meta ) {
             if (data[10]=='D') {
-                return '<div class="btn-group"><button class="btn btn-sm btn-success btnPostearNR" idNR="'+data[9]+'"><i class="fa fa-check"></i></button><button class="btn btn-sm btn-info btnImprimirNR" idNR="'+data[9]+'"><i class="fa fa-print"></i></button><button class="btn btn-sm btn-warning btnEditarNR" idNR="'+data[9]+'"><i class="fa fa-pencil"></i></button></div>';
+                return '<div class="btn-group"><button class="btn btn-sm btn-info btnImprimirNR" idNR="'+data[9]+'"><i class="fa fa-print"></i></button><button class="btn btn-sm btn-success btnPostearNR" idNR="'+data[9]+'"><i class="fa fa-check"></i></button><button class="btn btn-sm btn-warning btnEditarNR" idNR="'+data[9]+'"><i class="fa fa-pencil"></i></button><button class="btn btn-sm btn-default btnConfNR" idNR="'+data[9]+'"><i class="fa fa-money"></i></button></div>';
             }else{
-                return '<div class="btn-group"><button class="btn btn-sm btn-default btnPostearNR" idNR="'+data[9]+'"><i class="fa fa-check"></i></button><button class="btn btn-sm btn-info btnImprimirNR"  idNR="'+data[9]+'"><i class="fa fa-print"></i></button><button class="btn btn-sm btn-default btnEditarNR" disabled idNR="'+data[9]+'"><i class="fa fa-pencil"></i></button></div>';
+                return '<div class="btn-group"><button class="btn btn-sm btn-info btnImprimirNR"  idNR="'+data[9]+'"><i class="fa fa-print"></i></button><button class="btn btn-sm btn-default btnPostearNR" disabled idNR="'+data[9]+'"><i class="fa fa-check"></i></button></div><button  class="btn btn-sm btn-default btnEditarNR" disabled idNR="'+data[9]+'"><i class="fa fa-pencil"></i></button><button class="btn btn-sm btn-default btnConfNR" idNR="'+data[9]+'"><i class="fa fa-money"></i></button></div>';
             }
           
         }
+        
         //"defaultContent": '<div class="btn-group"><button class="btn btn-sm btn-info btnImprimirNR" idNR><i class="fa fa-print"></i></button><button class="btn btn-sm btnEditarNR" idNR><i class="fa fa-pencil"></i></button></div>'
     }
     ],
+    "createdRow": function( row, data, dataIndex ) {
+        if ( data[10] == 'D' ) {
+            $( row ).css( "background-color", "#F7B3B3");
+            $( row ).addClass( "warning" );
+        }else if ( data[10] == 'P' ) {
+            $( row ).css( "background-color", "#F9DDB5");
+            $( row ).addClass( "warning" );
+        }
+    },
     "order": [
         [0, 'desc']
     ],
@@ -52,91 +62,6 @@ var table = $(".tablaNotasRemision").DataTable({
 
 
 });
-
-
-/*=============================================
-FUNCIÓN PARA CARGAR BUTTON EDITAR
-=============================================
-
-function cargarbtnEditar(){
-
-    var btnEditarNR = $(".btnEditarNR");
-    //console.log("respuesta123",btnEditarNR);
-
-    for(var i = 0; i < btnEditarNR.length; i ++){
-
-        var data = table.row( $(btnEditarNR[i]).parents("tr")).data(); 
-        
-        if(data[10] == 'D'){
-
-            $(btnEditarNR[i]).addClass("btn-warning");
-
-
-        }else{
-            $(btnEditarNR[i]).addClass("btn-default");
-            $(btnEditarNR[i]).attr("disabled", "disabled");
-
-        }
-
-    }
-
-}
-
-/*=============================================
-CARGAMOS BUTTON EDITAR CUANDO ENTRAMOS A LA PÁGINA POR PRIMERA VEZ
-=============================================
-
-setTimeout(function(){
-
-    cargarbtnEditar();
-
-},300)
-
-/*=============================================
-CARGAMOS BUTTON EDITAR CUANDO INTERACTUAMOS CON EL PAGINADOR
-=============================================
-
-$(".dataTables_paginate").click(function(){
-
-    cargarbtnEditar();
-})
-
-/*=============================================
-CARGAMOS BUTTON EDITAR CUANDO INTERACTUAMOS CON EL BUSCADOR
-=============================================
-$("input[aria-controls='DataTables_Table_0']").focus(function(){
-
-    $(document).keyup(function(event){
-
-        event.preventDefault();
-
-        cargarbtnEditar();
-
-    })
-
-
-})
-
-/*=============================================
-CARGAMOS BUTTON EDITAR CUANDO INTERACTUAMOS CON EL FILTRO DE CANTIDAD
-=============================================
-
-$("select[name='DataTables_Table_0_length']").change(function(){
-
-    cargarbtnEditar();
-
-})
-
-/*=============================================
-CARGAMOS BUTTON EDITAR CUANDO INTERACTUAMOS CON EL FILTRO DE ORDENAR
-=============================================
-
-$(".sorting").click(function(){
-
-    cargarbtnEditar();
-
-})
-
 
 /*=============================================
                AGREGANDO PRODUCTOS
@@ -335,7 +260,7 @@ function activarSelect(){
 
 
 /*=============================================
-MODIFICAR LA CANTIDAD
+          MODIFICAR LA CANTIDAD
 =============================================*/
 
 $(".formularioNR").on("change", "input.nuevaCantidadProducto", function(){
@@ -347,7 +272,7 @@ $(".formularioNR").on("change", "input.nuevaCantidadProducto", function(){
 })
 
 /*=============================================
-LISTAR TODOS LOS PRODUCTOS
+        LISTAR TODOS LOS PRODUCTOS
 =============================================*/
 
 function listarProductos(){
@@ -422,8 +347,7 @@ $(".formularioNR").on("click",".btnPostearNR",function(){
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         cancelButtonText: "Cancelar",
-        confirmButtonText: "Si, postear!"  
-            
+        confirmButtonText: "Si, postear!"      
     }).then((result) => {
         if(result.value){
             window.location = "index.php?ruta=notaremision&idPNR="+idNR+"&resultado="+result.value
@@ -450,4 +374,124 @@ $(".tablaNotasRemision").on("click",".btnPostearNR",function(){
         }
     })
         
+})
+
+/*======================================
+=        CONFIRMAR NOTA REMISION       =
+======================================*/
+$(".tablaNotasRemision").on("click",".btnConfNR",function(){ 
+    var idNR = $(this).attr("idNR");  
+    window.location = "index.php?ruta=conf-nr&idNR="+idNR
+})
+
+$('#confTable').DataTable( {
+  "paging":   false,
+  "ordering": false,
+  "info":     false
+} );
+
+/*=============================================
+SELECCIONAR MÉTODO DE COBRO
+=============================================*/
+
+$("#nuevoMetodoCobro").change(function(){
+
+    var metodo = $(this).val();
+
+    if(metodo == "QQ"){
+
+      $(this).parent().parent().parent().parent().children(".cobro").children(".cajaMetodoCobro").html(
+
+        '<label class="col-xs-6 col-form-label">Monto por QQ</label>'+
+
+        '<div class="col-xs-4" id="cobroQQ" style="padding-left:0px">'+
+
+          '<div class="input-group">'+
+
+            '<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+
+            '<input type="text" min="0" class="form-control" id="nuevaCxC" placeholder="0.00"  required>'+
+
+          '</div>'+
+
+        '</div>'
+      )
+
+      // Agregar formato al precio
+      $('#nuevaCxC').number( true, 2);
+
+    }else{
+
+      $(this).parent().parent().parent().parent().children(".cobro").children('.cajaMetodoCobro').html(
+
+        '<label class="col-xs-6 col-form-label">Monto fijo</label>'+
+
+        '<div class="col-xs-4" id="cobroFijo" style="padding-left:0px">'+
+
+          '<div class="input-group">'+
+
+            '<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+
+            '<input type="text" min="0" class="form-control" id="nuevaCxC" placeholder="0.00"  required>'+
+
+          '</div>'+
+
+        '</div>'
+      )
+
+    }
+
+})
+
+/*=============================================
+SELECCIONAR MÉTODO DE PAGO
+=============================================*/
+
+$("#nuevoMetodoPago").change(function(){
+
+    var metodo = $(this).val();
+
+    if(metodo == "QQ"){
+
+      $(this).parent().parent().parent().parent().children(".pago").children(".cajaMetodoPago").html(
+
+        '<label class="col-xs-6 col-form-label">Monto por QQ</label>'+
+
+        '<div class="col-xs-4" id="cobroQQ" style="padding-left:0px">'+
+
+          '<div class="input-group">'+
+
+            '<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+
+            '<input type="text" min="0" class="form-control" id="nuevaCxC" placeholder="0.00"  required>'+
+
+          '</div>'+
+
+        '</div>'
+      )
+
+      // Agregar formato al precio
+      $('#nuevaCxC').number( true, 2);
+
+    }else{
+
+      $(this).parent().parent().parent().parent().children(".pago").children('.cajaMetodoPago').html(
+
+        '<label class="col-xs-6 col-form-label">Monto fijo</label>'+
+
+        '<div class="col-xs-4" id="cobroFijo" style="padding-left:0px">'+
+
+          '<div class="input-group">'+
+
+            '<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+
+            '<input type="text" class="form-control" id="nuevaCxP" placeholder="0.00" required>'+
+
+          '</div>'+
+
+        '</div>'
+      )
+
+    }
+
 })

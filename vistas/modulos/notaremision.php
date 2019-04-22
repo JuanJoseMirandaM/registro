@@ -24,7 +24,8 @@
       </div>
 
       <div class="box-body">
-        <table class="table table-bordered table-striped dt-responsive tablaNotasRemision">
+
+        <table class="uk-table uk-table-hover uk-table-striped dt-responsive tablaNotasRemision">
           <thead>
             <tr>
               <th style="width:10px">#</th>
@@ -39,7 +40,7 @@
               <th>NumeroSAP</th>
               <th>Origen-Destino</th>
               <!--<th>Placa</th>
-                dt-responsive
+                dt-responsive 
               <th>Chofer</th>-->
               <th>Acciones</th>
             </tr>

@@ -1,10 +1,7 @@
-<?php 
-  session_start();
- ?>
-
 <!DOCTYPE html>
 <html>
 <head>
+  <?php session_start(); ?>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Note System</title>
@@ -37,13 +34,13 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
   <!-- DataTables -->
-  <!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">-->
   <link rel="stylesheet" href="vistas/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="vistas/bower_components/datatables.net-bs/css/responsive.bootstrap.min.css">
+  <!-- Uikit-->
+  <link rel="stylesheet" href="vistas/bower_components/uikit/dataTables.uikit.min.css">
+  <link rel="stylesheet" href="vistas/bower_components/uikit/uikit.min.css">
 
-  <!-- Select2 
-  <link rel="stylesheet" href="vistas/bower_components/select2/dist/css/select2.min.css">-->
+  <!-- Select2 -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
   <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
@@ -84,16 +81,11 @@
   <script src="vistas/dist/js/demo.js"></script>
 
   <!-- DataTables -->
-  <!--<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.js"></script>
-  <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.3.1.js"></script>
-  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>-->
   
   <script src="vistas/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
   <script src="vistas/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
   <script src="vistas/bower_components/datatables.net-bs/js/dataTables.responsive.min.js"></script>
   <script src="vistas/bower_components/datatables.net-bs/js/responsive.bootstrap.min.js"></script>
-
   <script src="vistas/plugins/sweetalert2/sweetalert2.all.js"></script>
 
   <!-- Select2 -->
@@ -112,12 +104,9 @@
   <script src="vistas/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
   <script src="vistas/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.es.js" charset="UTF-8"></script>
 
-
   <!-- jQuery number-->
   <script src="vistas/plugins/jquery/jquery.min.js"></script>
 
-
-  
   <!--====  End of PLUGIN JAVA SCRIPT  ====-->
 
   <!--    ñ y caracteres especiales     -->
@@ -131,8 +120,8 @@
 
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini login-page">
 
-
-  <?php
+  <?php 
+  
 
   if (isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"]=="ok" ) {
   
@@ -153,8 +142,9 @@
          $_GET["ruta"] == "notaremision"||
          $_GET["ruta"] == "crear-notaremision"||
          $_GET["ruta"] == "editar-notaremision"||
-    
+         $_GET["ruta"] == "perfil"||
 
+         $_GET["ruta"] == "conf-nr"||
          $_GET["ruta"] == "reportes"||
          $_GET["ruta"] == "salir"){
         
@@ -184,6 +174,7 @@
 <script src="vistas/js/productos.js"></script>
 <script src="vistas/js/proveedores.js"></script>
 <script src="vistas/js/notaremision.js"></script>
+
 </body>
 </html>
 
